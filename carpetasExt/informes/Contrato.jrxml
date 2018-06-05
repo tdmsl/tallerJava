@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Contrato" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e1529df3-513e-41cd-b244-4d1e7dc27e3a">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="48"/>
+	<parameter name="IDR" class="java.lang.Integer"/>
+	<parameter name="IDC2" class="java.lang.Integer"/>
+	<parameter name="PVP" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[SELECT
+     CLIENTES."IDC" AS CLIENTES_IDC,
+     CLIENTES."NOMBRE" AS CLIENTES_NOMBRE,
+     CLIENTES."DIRECCION" AS CLIENTES_DIRECCION,
+     CLIENTES."CIUDAD" AS CLIENTES_CIUDAD,
+     CLIENTES."PROVINCIA" AS CLIENTES_PROVINCIA,
+     CLIENTES."CODIGOPOSTAL" AS CLIENTES_CODIGOPOSTAL,
+     CLIENTES."TELEFONO" AS CLIENTES_TELEFONO,
+     CLIENTES."OBSERVACIONESCLIENTE" AS CLIENTES_OBSERVACIONESCLIENTE,
+     CLIENTES."NIF" AS CLIENTES_NIF,
+     MATRICULAS."MATRICULA" AS MATRICULAS_MATRICULA,
+     MATRICULAS."IDCLIENTE" AS MATRICULAS_IDCLIENTE,
+     MATRICULAS."MARCA" AS MATRICULAS_MARCA,
+     MATRICULAS."MODELO" AS MATRICULAS_MODELO,
+     MATRICULAS."BASTIDOR" AS MATRICULAS_BASTIDOR,
+     MATRICULAS."CODIGO" AS MATRICULAS_CODIGO,
+     MATRICULAS."OBSERVACIONESMATRICULA" AS MATRICULAS_OBSERVACIONESMATRICULA,
+     PERSONALIZACION."ID" AS PERSONALIZACION_ID,
+     PERSONALIZACION."NOMBREEMPRESA" AS PERSONALIZACION_NOMBREEMPRESA,
+     PERSONALIZACION."CIF" AS PERSONALIZACION_CIF,
+     PERSONALIZACION."DIRECCION" AS PERSONALIZACION_DIRECCION,
+     PERSONALIZACION."CODIGOPOSTAL" AS PERSONALIZACION_CODIGOPOSTAL,
+     PERSONALIZACION."CIUDAD" AS PERSONALIZACION_CIUDAD,
+     PERSONALIZACION."TELEFONO" AS PERSONALIZACION_TELEFONO,
+     PERSONALIZACION."EMAIL" AS PERSONALIZACION_EMAIL,
+     PERSONALIZACION."IVA" AS PERSONALIZACION_IVA,
+     PERSONALIZACION."VALORMO" AS PERSONALIZACION_VALORMO,
+     PERSONALIZACION."NOTAS" AS PERSONALIZACION_NOTAS,
+     PERSONALIZACION."LOGO" AS PERSONALIZACION_LOGO,
+     PERSONALIZACION."REGIND" AS PERSONALIZACION_REGIND,
+     PERSONALIZACION."REGESP" AS PERSONALIZACION_REGESP,
+     PERSONALIZACION."CUENTABANCO" AS PERSONALIZACION_CUENTABANCO,
+     PERSONALIZACION."TEXTOORDEN" AS PERSONALIZACION_TEXTOORDEN,
+     PERSONALIZACION."TEXTOPRESUPUESTO" AS PERSONALIZACION_TEXTOPRESUPUESTO,
+     PERSONALIZACION."TEXTOFACTURA" AS PERSONALIZACION_TEXTOFACTURA,
+     PERSONALIZACION."RUTAINFORMES" AS PERSONALIZACION_RUTAINFORMES,
+     PERSONALIZACION."RUTAIMGFONDO" AS PERSONALIZACION_RUTAIMGFONDO,
+     PERSONALIZACION."RUTAAGENDA" AS PERSONALIZACION_RUTAAGENDA,
+     PERSONALIZACION."RUTABANCO" AS PERSONALIZACION_RUTABANCO,
+     PERSONALIZACION."RUTAEXCEL" AS PERSONALIZACION_RUTAEXCEL,
+     PERSONALIZACION."RUTADRIVE" AS PERSONALIZACION_RUTADRIVE,
+     PERSONALIZACION."RUTACORREO" AS PERSONALIZACION_RUTACORREO,
+     PERSONALIZACION."NFACTURA" AS PERSONALIZACION_NFACTURA,
+     PERSONALIZACION."LOOKANDFEEL" AS PERSONALIZACION_LOOKANDFEEL,
+     REPARACIONES."IDR" AS REPARACIONES_IDR,
+     REPARACIONES."CUENTACLIENTE" AS REPARACIONES_CUENTACLIENTE,
+     REPARACIONES."MATRICULA" AS REPARACIONES_MATRICULA,
+     REPARACIONES."KM" AS REPARACIONES_KM,
+     REPARACIONES."FECHAENTRADA" AS REPARACIONES_FECHAENTRADA,
+     REPARACIONES."FECHASALIDA" AS REPARACIONES_FECHASALIDA,
+     REPARACIONES."NFACTURA" AS REPARACIONES_NFACTURA,
+     REPARACIONES."RECEPTOR" AS REPARACIONES_RECEPTOR,
+     REPARACIONES."TRABAJOSREALIZAR" AS REPARACIONES_TRABAJOSREALIZAR,
+     REPARACIONES."CUENTACLIENTE2" AS REPARACIONES_CUENTACLIENTE2,
+     REPARACIONES."NSINIESTRO" AS REPARACIONES_NSINIESTRO,
+     REBU."NFACTURA" AS REBU_ID,
+     REBU."IDR" AS REBU_IDR,
+     REBU."VALOR_COMPRA" AS REBU_VALOR_COMPRA,
+     REBU."VALOR_VENTA" AS REBU_VALOR_VENTA
+FROM
+     "PUBLIC"."CLIENTES" CLIENTES,
+     "PUBLIC"."MATRICULAS" MATRICULAS,
+     "PUBLIC"."PERSONALIZACION" PERSONALIZACION,
+     "PUBLIC"."REPARACIONES" REPARACIONES,
+     "PUBLIC"."REBU" REBU
+WHERE
+     REPARACIONES.IDR = $P{IDR}
+ AND IDC = CuentaCliente
+ AND MATRICULAS.MATRICULA = REPARACIONES.MATRICULA
+ AND REBU.IDR = $P{IDR}]]>
+	</queryString>
+	<field name="CLIENTES_IDC" class="java.lang.Integer"/>
+	<field name="CLIENTES_NOMBRE" class="java.lang.String"/>
+	<field name="CLIENTES_DIRECCION" class="java.lang.String"/>
+	<field name="CLIENTES_CIUDAD" class="java.lang.String"/>
+	<field name="CLIENTES_PROVINCIA" class="java.lang.String"/>
+	<field name="CLIENTES_CODIGOPOSTAL" class="java.lang.String"/>
+	<field name="CLIENTES_TELEFONO" class="java.lang.String"/>
+	<field name="CLIENTES_OBSERVACIONESCLIENTE" class="java.lang.String"/>
+	<field name="CLIENTES_NIF" class="java.lang.String"/>
+	<field name="MATRICULAS_MATRICULA" class="java.lang.String"/>
+	<field name="MATRICULAS_IDCLIENTE" class="java.lang.Integer"/>
+	<field name="MATRICULAS_MARCA" class="java.lang.String"/>
+	<field name="MATRICULAS_MODELO" class="java.lang.String"/>
+	<field name="MATRICULAS_BASTIDOR" class="java.lang.String"/>
+	<field name="MATRICULAS_CODIGO" class="java.lang.String"/>
+	<field name="MATRICULAS_OBSERVACIONESMATRICULA" class="java.lang.String"/>
+	<field name="PERSONALIZACION_ID" class="java.lang.Long"/>
+	<field name="PERSONALIZACION_NOMBREEMPRESA" class="java.lang.String"/>
+	<field name="PERSONALIZACION_CIF" class="java.lang.String"/>
+	<field name="PERSONALIZACION_DIRECCION" class="java.lang.String"/>
+	<field name="PERSONALIZACION_CODIGOPOSTAL" class="java.lang.String"/>
+	<field name="PERSONALIZACION_CIUDAD" class="java.lang.String"/>
+	<field name="PERSONALIZACION_TELEFONO" class="java.lang.String"/>
+	<field name="PERSONALIZACION_EMAIL" class="java.lang.String"/>
+	<field name="PERSONALIZACION_IVA" class="java.lang.Integer"/>
+	<field name="PERSONALIZACION_VALORMO" class="java.lang.Integer"/>
+	<field name="PERSONALIZACION_NOTAS" class="java.sql.Clob"/>
+	<field name="PERSONALIZACION_LOGO" class="java.lang.String"/>
+	<field name="PERSONALIZACION_REGIND" class="java.lang.String"/>
+	<field name="PERSONALIZACION_REGESP" class="java.lang.String"/>
+	<field name="PERSONALIZACION_CUENTABANCO" class="java.lang.String"/>
+	<field name="PERSONALIZACION_TEXTOORDEN" class="java.lang.String"/>
+	<field name="PERSONALIZACION_TEXTOPRESUPUESTO" class="java.lang.String"/>
+	<field name="PERSONALIZACION_TEXTOFACTURA" class="java.lang.String"/>
+	<field name="PERSONALIZACION_RUTAINFORMES" class="java.lang.String"/>
+	<field name="PERSONALIZACION_RUTAIMGFONDO" class="java.lang.String"/>
+	<field name="PERSONALIZACION_RUTAAGENDA" class="java.lang.String"/>
+	<field name="PERSONALIZACION_RUTABANCO" class="java.lang.String"/>
+	<field name="PERSONALIZACION_RUTAEXCEL" class="java.lang.String"/>
+	<field name="PERSONALIZACION_RUTADRIVE" class="java.lang.String"/>
+	<field name="PERSONALIZACION_RUTACORREO" class="java.lang.String"/>
+	<field name="PERSONALIZACION_NFACTURA" class="java.lang.Integer"/>
+	<field name="PERSONALIZACION_LOOKANDFEEL" class="java.lang.String"/>
+	<field name="REPARACIONES_IDR" class="java.lang.Integer"/>
+	<field name="REPARACIONES_CUENTACLIENTE" class="java.lang.Integer"/>
+	<field name="REPARACIONES_MATRICULA" class="java.lang.String"/>
+	<field name="REPARACIONES_KM" class="java.lang.Integer"/>
+	<field name="REPARACIONES_FECHAENTRADA" class="java.sql.Date"/>
+	<field name="REPARACIONES_FECHASALIDA" class="java.sql.Date"/>
+	<field name="REPARACIONES_NFACTURA" class="java.lang.String"/>
+	<field name="REPARACIONES_RECEPTOR" class="java.lang.Integer"/>
+	<field name="REPARACIONES_TRABAJOSREALIZAR" class="java.lang.String"/>
+	<field name="REPARACIONES_CUENTACLIENTE2" class="java.lang.Integer"/>
+	<field name="REPARACIONES_NSINIESTRO" class="java.lang.String"/>
+	<field name="REBU_ID" class="java.lang.Integer"/>
+	<field name="REBU_IDR" class="java.lang.Integer"/>
+	<field name="REBU_VALOR_COMPRA" class="java.lang.Double"/>
+	<field name="REBU_VALOR_VENTA" class="java.lang.Double"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="179" splitType="Stretch">
+			<image>
+				<reportElement x="10" y="13" width="275" height="159" uuid="c9ab0965-f532-4dfb-9916-6389c444490d"/>
+				<imageExpression><![CDATA[$F{PERSONALIZACION_LOGO}]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="297" y="13" width="258" height="63" uuid="8f62a7df-49eb-48f0-8a68-714a7816a1f0"/>
+				<textElement>
+					<font size="20"/>
+				</textElement>
+				<textFieldExpression><![CDATA["CONTRATO ASOCIADO A LA ORDEN Nº "+$F{REPARACIONES_IDR}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="94" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="43" uuid="6f385d74-28af-4a84-a01d-632e8459c9c7"/>
+				<textElement textAlignment="Center">
+					<font size="22" isBold="true"/>
+					<paragraph tabStopWidth="5"/>
+				</textElement>
+				<text><![CDATA[CONTRATO DE COMPRAVENTA DE VEHICULOS ]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="191" y="58" width="364" height="30" uuid="13e5c9f2-2159-48ef-8ada-ab748389f193"/>
+				<textElement>
+					<font size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="58" width="181" height="30" uuid="6df313ed-8dcc-46f0-b071-56c5f83c4679"/>
+				<textElement textAlignment="Right">
+					<font size="18"/>
+				</textElement>
+				<text><![CDATA[Madrid a]]></text>
+			</staticText>
+			<line>
+				<reportElement x="10" y="43" width="545" height="1" uuid="7147a96b-77b9-42b2-b6fe-a3d2fa3d4fff"/>
+			</line>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="406">
+			<textField>
+				<reportElement x="10" y="0" width="545" height="40" uuid="128350df-fa6d-4474-a260-6266a49d36ad"/>
+				<textFieldExpression><![CDATA["De una parte " +$F{CLIENTES_NOMBRE}+" , con documento nacional de identidad Nº "+ $F{CLIENTES_NIF}+" domiciliado en "+$F{CLIENTES_CIUDAD}+" provincia de "+$F{CLIENTES_PROVINCIA}+" , calle "+$F{CLIENTES_DIRECCION}+" en calidad de VENDEDOR"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="10" y="40" width="545" height="45" uuid="7b074b53-e39d-4c79-bf93-5ac5bc1982e8"/>
+				<textFieldExpression><![CDATA["Y de otra parte " +$F{PERSONALIZACION_NOMBREEMPRESA}+" , con CIF Nº "+$F{PERSONALIZACION_CIF}+" domiciliado en "+$F{PERSONALIZACION_CIUDAD}+" codigo postal "+$F{PERSONALIZACION_CODIGOPOSTAL}+" , calle "+$F{PERSONALIZACION_DIRECCION}+" en calidad de COMPRADOR"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="85" width="555" height="40" uuid="aa4a7d02-31c3-4aba-b4a5-fe118db90349"/>
+				<textElement textAlignment="Center">
+					<font size="24" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[MANIFIESTAN]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="10" y="139" width="545" height="47" uuid="bd3dabb9-ddcf-4f98-b24a-261df6e50068"/>
+				<textFieldExpression><![CDATA["Que han acordado, por el presente documento lo llevan a efecto, formalizar contrato de compra-venta del vehículo automóvil cuyas características son las siguientes: (La gestoría no se responsabiliza de precio reflejado en el contrato entre ambos)."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="10" y="186" width="545" height="42" uuid="60c46619-97d5-48b2-bd4a-d777d1f2b391"/>
+				<textFieldExpression><![CDATA["El Vendedor manifiesta que no pesa sobre el vehículo ningún gravamen arbitrario ni deudas (en caso contrario se compromete a subsanarlo) y se responsabiliza a facilitar a la Gestoria toda la documentación necesaria para hacer el cambio de nombre."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="10" y="228" width="545" height="39" uuid="47bbbd39-50c2-4c97-8668-8a208ca81b16"/>
+				<textFieldExpression><![CDATA["El Comprador manifiesta haber probado el automóvil a entera disposición y acepta el mismo en las condiciones que se encuentra y sin ningún tipo de garantia por parte del vendedor. En conformidad con lo expuesto rehusa a todo posible derecho de reclamaciones que pudiera tener por el mismo."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="10" y="267" width="545" height="36" uuid="8f2f86b4-5a01-4b7d-adf6-cd484fd52606"/>
+				<textFieldExpression><![CDATA["El Comprador asi también se hace cargo a partir de este momento de cuantas responsabilidades se desprendan del uso y propiedad del vehículo mencionado a partir de la fecha de contrato."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="10" y="330" width="128" height="20" uuid="c1abff33-84c6-49db-a378-c6625067ca85"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{MATRICULAS_BASTIDOR}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="138" y="330" width="100" height="20" uuid="f04bed4f-bd02-4e12-bf8c-205e0142c6dd"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{REPARACIONES_MATRICULA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="238" y="330" width="100" height="20" uuid="f4e6eb7f-5184-4e63-b09c-408f8d69a7fd"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{MATRICULAS_MARCA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="428" y="330" width="110" height="20" uuid="b622cd07-ab1c-4188-a9b9-45029c619cb6"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{REBU_VALOR_COMPRA}+" Euros"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="336" y="330" width="92" height="20" uuid="8a634201-c400-4592-a55a-5f4cb34e3fdc"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{MATRICULAS_MODELO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="10" y="310" width="128" height="20" uuid="70c2c623-aa2c-4bf9-90ba-c9f7f029bc20"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nº BASTIDOR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="138" y="310" width="100" height="20" uuid="ef6054dd-8b68-4138-81a5-4251b93e154e"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[MATRICULA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="238" y="310" width="100" height="20" uuid="d33488b7-21eb-4c19-a587-c2a61524a91f"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[MARCA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="338" y="310" width="100" height="20" uuid="eddb30d8-8d66-4ceb-9c09-35cd9fc39930"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[MODELO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="428" y="310" width="110" height="20" uuid="62dff149-7560-423b-95e6-01597994af18"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PRECIO VENTA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="366" width="545" height="20" uuid="5238a8cf-485d-4c75-b441-c8dc5ce95f38"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Y para que conste firman el presente contrato en el lugar y fecha arriba indicado]]></text>
+			</staticText>
+			<line>
+				<reportElement x="10" y="354" width="533" height="1" uuid="d14242c8-f786-468f-8585-e25ec67702b7"/>
+			</line>
+			<line>
+				<reportElement x="10" y="304" width="533" height="1" uuid="f48a97b7-c32d-41a8-b50c-46a76bad7ee1"/>
+			</line>
+		</band>
+	</columnHeader>
+	<pageFooter>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="10" y="10" width="275" height="20" uuid="e3da4369-1b8b-409c-b750-01108d7269d4"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[EL VENDEDOR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="285" y="10" width="270" height="20" uuid="08775f7a-1f6d-42f0-b687-2b6d66338439"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[EL COMPRADOR]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>

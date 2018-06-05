@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="PresupuestoManoObra" pageWidth="555" pageHeight="802" whenNoDataType="NoDataSection" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" whenResourceMissingType="Empty" uuid="22c469fd-b18e-4d55-97f3-c531c92ab10a">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="IDR" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[SELECT
+     ManoObra.`IDR` AS ManoObra_IDR,
+     ManoObra.`Concepto` AS ManoObra_Concepto,
+     ManoObra.`HorasTrabajo` AS ManoObra_HorasTrabajo,
+     ManoObra.`ValorHora` AS ManoObra_ValorHora,
+     ManoObra.`Total` AS ManoObra_Total,
+     ManoObra.`Fecha` AS ManoObra_Fecha,
+     ManoObra.`Operario` AS ManoObra_Operario,
+     ManoObra.`id` AS ManoObra_id
+FROM
+     `ManoObra` ManoObra
+WHERE
+     ManoObra.IDR = $P{IDR}]]>
+	</queryString>
+	<field name="ManoObra_Concepto" class="java.lang.String"/>
+	<field name="ManoObra_HorasTrabajo" class="java.lang.Double"/>
+	<field name="ManoObra_ValorHora" class="java.lang.Double"/>
+	<field name="ManoObra_Total" class="java.lang.Double"/>
+	<field name="ManoObra_Operario" class="java.lang.String"/>
+	<variable name="sumaMo" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{ManoObra_Total}]]></variableExpression>
+		<initialValueExpression><![CDATA[0.0]]></initialValueExpression>
+	</variable>
+	<columnHeader>
+		<band height="23" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="0965951e-8041-432b-ab11-f5d6ff9c2f06" x="0" y="2" width="368" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[DESCRIPCION MANO DE OBRA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="8b239a80-53aa-4d44-8370-7f6c4d9635a4" x="540" y="2" width="15" height="20"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[OP]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<textField>
+				<reportElement uuid="eed4eb0c-1e82-448b-9415-dcebfc5e2b21" x="1" y="0" width="367" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{ManoObra_Concepto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b2aef2de-b261-4061-a913-f93b3e228244" x="342" y="0" width="26" height="15"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{ManoObra_HorasTrabajo}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement uuid="195e9fcf-9bc8-4d51-a0b5-da3839a957c1" x="368" y="0" width="57" height="15"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{ManoObra_ValorHora}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement uuid="9f1ccfeb-28ad-4a97-8a2c-6af8f6b4616d" x="457" y="0" width="72" height="15"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{ManoObra_Total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="90ab59f7-6886-4c25-ae23-63241b0b47ec" x="540" y="1" width="15" height="15"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{ManoObra_Operario}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

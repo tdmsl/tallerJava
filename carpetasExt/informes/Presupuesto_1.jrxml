@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Presupuesto" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" whenResourceMissingType="Empty" uuid="27b1503c-3fa4-497d-86c5-b25b7e17c30c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="IDR" class="java.lang.Integer"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["E:\\ProgramaTallerJava\\ProgramaTaller\\dist\\Informes\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     Personalizacion.`ID` AS Personalizacion_ID,
+     Personalizacion.`NombreEmpresa` AS Personalizacion_NombreEmpresa,
+     Personalizacion.`CIF` AS Personalizacion_CIF,
+     Personalizacion.`Direccion` AS Personalizacion_Direccion,
+     Personalizacion.`CodigoPostal` AS Personalizacion_CodigoPostal,
+     Personalizacion.`Ciudad` AS Personalizacion_Ciudad,
+     Personalizacion.`Telefono` AS Personalizacion_Telefono,
+     Personalizacion.`Email` AS Personalizacion_Email,
+     Personalizacion.`IVA` AS Personalizacion_IVA,
+     Personalizacion.`ValorMO` AS Personalizacion_ValorMO,
+     Personalizacion.`Notas` AS Personalizacion_Notas,
+     Personalizacion.`Logo` AS Personalizacion_Logo,
+     Personalizacion.`RegInd` AS Personalizacion_RegInd,
+     Personalizacion.`RegEsp` AS Personalizacion_RegEsp,
+     Personalizacion.`CuentaBanco` AS Personalizacion_CuentaBanco,
+     Personalizacion.`TextoOrden` AS Personalizacion_TextoOrden,
+     Personalizacion.`TextoPresupuesto` AS Personalizacion_TextoPresupuesto,
+     Matriculas.`Matricula` AS Matriculas_Matricula,
+     Matriculas.`idCliente` AS Matriculas_idCliente,
+     Matriculas.`Marca` AS Matriculas_Marca,
+     Matriculas.`Modelo` AS Matriculas_Modelo,
+     Matriculas.`Bastidor` AS Matriculas_Bastidor,
+     Matriculas.`Codigo` AS Matriculas_Codigo,
+     Matriculas.`ObservacionesMatricula` AS Matriculas_ObservacionesMatricula,
+     Clientes.`IDC` AS Clientes_IDC,
+     Clientes.`Nombre` AS Clientes_Nombre,
+     Clientes.`Direccion` AS Clientes_Direccion,
+     Clientes.`Ciudad` AS Clientes_Ciudad,
+     Clientes.`Provincia` AS Clientes_Provincia,
+     Clientes.`CodigoPostal` AS Clientes_CodigoPostal,
+     Clientes.`Telefono` AS Clientes_Telefono,
+     Clientes.`ObservacionesCliente` AS Clientes_ObservacionesCliente,
+     Clientes.`Nif` AS Clientes_Nif,
+     Reparaciones.`IDR` AS Reparaciones_IDR,
+     Reparaciones.`CuentaCliente` AS Reparaciones_CuentaCliente,
+     Reparaciones.`Matricula` AS Reparaciones_Matricula,
+     Reparaciones.`KM` AS Reparaciones_KM,
+     Reparaciones.`FechaEntrada` AS Reparaciones_FechaEntrada,
+     Reparaciones.`FechaSalida` AS Reparaciones_FechaSalida,
+     Reparaciones.`Nfactura` AS Reparaciones_Nfactura,
+     Reparaciones.`Receptor` AS Reparaciones_Receptor,
+     Reparaciones.`TrabajosRealizar` AS Reparaciones_TrabajosRealizar
+FROM
+     `Personalizacion` Personalizacion,
+     `Clientes` Clientes,
+     `Reparaciones` Reparaciones,
+     `Matriculas` Matriculas
+WHERE
+     Reparaciones.IDR = $P{IDR}
+ AND Clientes.IDC = Reparaciones.CuentaCliente
+ AND Matriculas.Matricula = Reparaciones.Matricula]]>
+	</queryString>
+	<field name="Personalizacion_ID" class="java.lang.Integer"/>
+	<field name="Personalizacion_NombreEmpresa" class="java.lang.String"/>
+	<field name="Personalizacion_CIF" class="java.lang.String"/>
+	<field name="Personalizacion_Direccion" class="java.lang.String"/>
+	<field name="Personalizacion_CodigoPostal" class="java.lang.String"/>
+	<field name="Personalizacion_Ciudad" class="java.lang.String"/>
+	<field name="Personalizacion_Telefono" class="java.lang.String"/>
+	<field name="Personalizacion_Email" class="java.lang.String"/>
+	<field name="Personalizacion_IVA" class="java.lang.String"/>
+	<field name="Personalizacion_ValorMO" class="java.lang.Integer"/>
+	<field name="Personalizacion_Notas" class="java.lang.String"/>
+	<field name="Personalizacion_Logo" class="java.lang.Object"/>
+	<field name="Personalizacion_RegInd" class="java.lang.String"/>
+	<field name="Personalizacion_RegEsp" class="java.lang.String"/>
+	<field name="Personalizacion_CuentaBanco" class="java.lang.String"/>
+	<field name="Personalizacion_TextoOrden" class="java.lang.String"/>
+	<field name="Personalizacion_TextoPresupuesto" class="java.lang.String"/>
+	<field name="Matriculas_Matricula" class="java.lang.String"/>
+	<field name="Matriculas_idCliente" class="java.lang.Integer"/>
+	<field name="Matriculas_Marca" class="java.lang.String"/>
+	<field name="Matriculas_Modelo" class="java.lang.String"/>
+	<field name="Matriculas_Bastidor" class="java.lang.String"/>
+	<field name="Matriculas_Codigo" class="java.lang.String"/>
+	<field name="Matriculas_ObservacionesMatricula" class="java.lang.String"/>
+	<field name="Clientes_IDC" class="java.lang.Integer"/>
+	<field name="Clientes_Nombre" class="java.lang.String"/>
+	<field name="Clientes_Direccion" class="java.lang.String"/>
+	<field name="Clientes_Ciudad" class="java.lang.String"/>
+	<field name="Clientes_Provincia" class="java.lang.String"/>
+	<field name="Clientes_CodigoPostal" class="java.lang.String"/>
+	<field name="Clientes_Telefono" class="java.lang.String"/>
+	<field name="Clientes_ObservacionesCliente" class="java.lang.String"/>
+	<field name="Clientes_Nif" class="java.lang.String"/>
+	<field name="Reparaciones_IDR" class="java.lang.Integer"/>
+	<field name="Reparaciones_CuentaCliente" class="java.lang.Integer"/>
+	<field name="Reparaciones_Matricula" class="java.lang.String"/>
+	<field name="Reparaciones_KM" class="java.lang.String"/>
+	<field name="Reparaciones_FechaEntrada" class="java.sql.Timestamp"/>
+	<field name="Reparaciones_FechaSalida" class="java.sql.Timestamp"/>
+	<field name="Reparaciones_Nfactura" class="java.lang.String"/>
+	<field name="Reparaciones_Receptor" class="java.lang.Integer"/>
+	<field name="Reparaciones_TrabajosRealizar" class="java.lang.String"/>
+	<variable name="sumaMat" class="java.lang.Double">
+		<variableExpression><![CDATA[$V{sumaMat}]]></variableExpression>
+	</variable>
+	<variable name="sumaMo" class="java.lang.Double"/>
+	<variable name="sumaText" class="java.lang.Double">
+		<variableExpression><![CDATA[]]></variableExpression>
+		<initialValueExpression><![CDATA[0.00]]></initialValueExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="286" splitType="Stretch">
+			<image>
+				<reportElement x="18" y="0" width="160" height="94" uuid="09cd5e80-b2d9-41d3-aa30-527ccbf1aa99"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<imageExpression><![CDATA[$F{Personalizacion_Logo}]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="18" y="108" width="160" height="13" uuid="da6d4783-7d7c-41a7-b25c-68fe51ce0388"/>
+				<textFieldExpression><![CDATA[$F{Personalizacion_CIF}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="18" y="121" width="160" height="14" uuid="966b05ab-8d6e-4d8d-aca8-10d1d0e9e7da"/>
+				<textFieldExpression><![CDATA[$F{Personalizacion_Direccion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="18" y="135" width="50" height="13" uuid="32d85226-d876-4eb8-a3cb-40d7033b184d"/>
+				<textFieldExpression><![CDATA[$F{Personalizacion_CodigoPostal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="68" y="135" width="110" height="13" uuid="46f92143-0419-431a-a4db-c695b61975c5"/>
+				<textFieldExpression><![CDATA[$F{Personalizacion_Ciudad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="18" y="148" width="160" height="14" uuid="25bfdaee-58df-4ec2-9583-115c448a74d4"/>
+				<textFieldExpression><![CDATA[$F{Personalizacion_Telefono}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="18" y="162" width="160" height="14" uuid="125a9cdb-7d17-412d-a4a1-7e5004543030"/>
+				<textFieldExpression><![CDATA[$F{Personalizacion_Email}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="515" y="11" width="40" height="20" uuid="64e11cb3-d3c9-4ec6-b35d-2bc4768d9262"/>
+				<textElement>
+					<font size="15"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Reparaciones_IDR}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="321" y="11" width="173" height="20" uuid="5b73ced6-c302-4a60-807b-ea08cb5cff17"/>
+				<textElement>
+					<font size="15"/>
+				</textElement>
+				<text><![CDATA[ORDEN DE TRABAJO Nº]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="480" y="68" width="61" height="20" uuid="f728facd-8514-4609-bbed-1fa71dd472fa"/>
+				<textFieldExpression><![CDATA[$F{Reparaciones_FechaEntrada}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="480" y="88" width="61" height="20" uuid="b34080ed-cab1-47cb-9156-ebb27e421917"/>
+				<textFieldExpression><![CDATA[$F{Reparaciones_FechaSalida}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="380" y="68" width="100" height="20" uuid="fdb73038-1ac2-45d7-8571-ec38f47a1d3b"/>
+				<text><![CDATA[Fecha Entrada]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="380" y="88" width="100" height="20" uuid="20760024-8e9d-45e1-8e1f-19ddc75d4c89"/>
+				<text><![CDATA[Fecha Salida]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="291" y="108" width="250" height="115" uuid="f6254410-6829-4b43-984f-b62ed22bffc4"/>
+			</rectangle>
+			<textField>
+				<reportElement x="294" y="108" width="200" height="20" uuid="cd10dcc0-c600-4100-8c0e-de5f3cbcd866"/>
+				<textFieldExpression><![CDATA[$F{Clientes_Nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="494" y="108" width="47" height="20" uuid="d1cd0884-107d-4cfa-98aa-1200960b0bde"/>
+				<textFieldExpression><![CDATA[$F{Clientes_IDC}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="294" y="148" width="247" height="20" uuid="8c2dbade-3526-4985-a2a9-70ccc22dd6ec"/>
+				<textFieldExpression><![CDATA[$F{Clientes_Direccion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="294" y="128" width="247" height="20" uuid="cea1bc90-a118-4265-b29e-a055fb00a3d4"/>
+				<textFieldExpression><![CDATA[$F{Clientes_Nif}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="294" y="168" width="86" height="20" uuid="1d584827-aa76-49c3-a21a-374420749b39"/>
+				<textFieldExpression><![CDATA[$F{Clientes_CodigoPostal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="380" y="168" width="151" height="20" uuid="de2cc886-16c6-44ed-a0bd-369bb977c77c"/>
+				<textFieldExpression><![CDATA[$F{Clientes_Ciudad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="294" y="188" width="100" height="20" uuid="ef3ee1b7-8ce7-4fe9-b22c-c7cd06478ef3"/>
+				<textFieldExpression><![CDATA[$F{Clientes_Telefono}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="18" y="94" width="163" height="14" uuid="4ce6f744-930c-4a72-98e1-5f598a70805b"/>
+				<textFieldExpression><![CDATA[$F{Personalizacion_NombreEmpresa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="101" y="184" width="77" height="20" uuid="3e978b9e-db12-4108-8022-d15a59aee541"/>
+				<textFieldExpression><![CDATA[$F{Personalizacion_RegInd}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="101" y="196" width="77" height="15" uuid="14ce3a25-1f9f-4bee-9a4c-165172400ca6"/>
+				<textFieldExpression><![CDATA[$F{Personalizacion_RegEsp}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="21" y="196" width="80" height="15" uuid="1b27d7ff-9d5d-4e69-a183-c5fe09538612"/>
+				<text><![CDATA[Reg Ind]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="21" y="184" width="80" height="20" uuid="a26c7ea6-5357-418e-a76a-1768d9a8aa11"/>
+				<text><![CDATA[Reg Esp]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="2" y="236" width="552" height="4" backcolor="#666666" uuid="db2e6f88-3ff6-4e83-88d4-8b9bf79f4633"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="2" y="252" width="552" height="27" uuid="dcfc0977-d484-4ea1-894b-444a94931ebe"/>
+			</rectangle>
+			<textField>
+				<reportElement x="2" y="252" width="100" height="27" uuid="b7299909-ca06-4b24-863c-84d62063580f"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA["Marca  "+$F{Matriculas_Marca}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="102" y="252" width="100" height="27" uuid="afed2ac5-d953-43a9-906b-a2fb5cd2cfce"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA["Modelo  "+$F{Matriculas_Modelo}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="421" y="252" width="130" height="27" uuid="297dc66a-71f0-45b3-8f70-2e887127c98f"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Matricula  "+$F{Matriculas_Matricula}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="202" y="252" width="149" height="25" uuid="23936b4b-5fcd-4ec8-956a-3fc201c581d0"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Matriculas_Bastidor}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="351" y="252" width="70" height="25" uuid="fe8fa613-c086-4950-b983-88933bcd7e26"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Reparaciones_KM}+"Km"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="202" y="31" width="174" height="33" uuid="6649ddd1-0f49-4f54-b073-cf055bd3162d"/>
+				<textElement>
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[PRESUPUESTO]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="18">
+			<subreport>
+				<reportElement x="2" y="0" width="553" height="18" uuid="887db731-3816-48ca-9cef-38b582789014"/>
+				<subreportParameter name="IDR">
+					<subreportParameterExpression><![CDATA[$P{IDR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<returnValue subreportVariable="sumaMat" toVariable="sumaMat"/>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "PresupuestoMateriales.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="19">
+			<subreport>
+				<reportElement x="2" y="0" width="553" height="19" uuid="215e4d58-8fbe-4cb8-a307-f204f12d5854"/>
+				<subreportParameter name="IDR">
+					<subreportParameterExpression><![CDATA[$P{IDR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<returnValue subreportVariable="sumaText" toVariable="sumaText"/>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "PresupuestoTrabajosExt.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="19">
+			<subreport>
+				<reportElement x="2" y="0" width="552" height="18" uuid="7998763b-255f-43a7-8e65-54af5e9d2831"/>
+				<subreportParameter name="IDR">
+					<subreportParameterExpression><![CDATA[$P{IDR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<returnValue subreportVariable="sumaMo" toVariable="sumaMo"/>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "PresupuestoManoObra.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="62">
+			<staticText>
+				<reportElement x="42" y="42" width="100" height="20" uuid="18f43632-e603-4049-89a5-59b2aca225e5"/>
+				<text><![CDATA[Firma Cliente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="223" y="42" width="100" height="20" uuid="865ff24b-4964-4835-8150-58e5c4d93ed1"/>
+				<text><![CDATA[Firma Taller]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="2" y="0" width="548" height="32" uuid="de3fefc8-e5d3-4606-ac5d-067f7c8616ab"/>
+				<textFieldExpression><![CDATA[$F{Personalizacion_TextoPresupuesto}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="42">
+			<textField>
+				<reportElement x="438" y="17" width="72" height="20" uuid="29385dba-8b21-4413-a400-908d57cf1743"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="510" y="17" width="40" height="20" uuid="361027c0-2a4a-491f-a154-90fb6d098070"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="87">
+			<rectangle>
+				<reportElement x="2" y="19" width="553" height="55" uuid="2feed9c2-de5a-4593-b201-248c4c85061a"/>
+			</rectangle>
+			<textField>
+				<reportElement x="127" y="19" width="113" height="25" uuid="9f584d0f-9d30-4a11-ad29-9256e5397f69"/>
+				<textFieldExpression><![CDATA["Mano de Obra "+NumberFormat.getCurrencyInstance().format($V{sumaMo}.doubleValue())]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="420" y="49" width="130" height="25" uuid="e0021bab-fde0-457f-ab1d-68058fc9edf3"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["TOTAL  "+NumberFormat.getCurrencyInstance().format(($V{sumaMat}+$V{sumaMo}+$V{sumaText})*0.21+($V{sumaMat}+$V{sumaMo}+$V{sumaText}))]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00;-#,##0.00">
+				<reportElement mode="Transparent" x="223" y="49" width="100" height="25" backcolor="#FFFFFF" uuid="2c32a427-0d6e-413f-befa-86cf062bc011"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["iva  "+NumberFormat.getCurrencyInstance().format(($V{sumaMat}+$V{sumaMo}+$V{sumaText})*0.21)]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Transparent" x="19" y="19" width="100" height="25" forecolor="#000000" backcolor="#FFFFFF" uuid="b0870799-849f-41b7-9f6b-90b7c6aca186"/>
+				<textFieldExpression><![CDATA["Materiales "+$V{sumaMat}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00;-#,##0.00">
+				<reportElement x="18" y="49" width="139" height="25" uuid="e4fa2334-8c16-43f0-866a-620485e09ccc"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["Base Imponible  "+NumberFormat.getCurrencyInstance().format(($V{sumaMat}+$V{sumaMo}+$V{sumaText}))]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="256" y="19" width="113" height="20" uuid="5056af3c-cd28-4978-a191-f59a99a6bea7"/>
+				<textFieldExpression><![CDATA["Tabajos Ext  "+NumberFormat.getCurrencyInstance().format($V{sumaText}.doubleValue())]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

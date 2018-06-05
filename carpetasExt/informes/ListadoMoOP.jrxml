@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="lMoOP" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1182309c-61a2-4e38-9d6b-a5171c9b0a13">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<subDataset name="dataset1" uuid="71033092-2a42-4747-b786-45837a973559"/>
+	<subDataset name="dataset2" uuid="e733a83c-9c10-4354-a494-61abc754174b"/>
+	<parameter name="fechaInicio" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fechaFinal" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="op" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     PERSONALIZACION."LOGO" AS PERSONALIZACION_LOGO,
+     MANOOBRA."IDR" AS MANOOBRA_IDR,
+     MANOOBRA."CONCEPTO" AS MANOOBRA_CONCEPTO,
+     MANOOBRA."HORASTRABAJO" AS MANOOBRA_HORASTRABAJO,
+     MANOOBRA."TOTAL" AS MANOOBRA_TOTAL,
+     MANOOBRA."FECHA" AS MANOOBRA_FECHA,
+     MANOOBRA."OPERARIO" AS MANOOBRA_OPERARIO,
+     REPARACIONES."IDR" AS REPARACIONES_IDR,
+     REPARACIONES."CUENTACLIENTE" AS REPARACIONES_CUENTACLIENTE,
+     REPARACIONES."MATRICULA" AS REPARACIONES_MATRICULA,
+     REPARACIONES."NFACTURA" AS REPARACIONES_NFACTURA,
+     REPARACIONES."TRABAJOSREALIZAR" AS REPARACIONES_TRABAJOSREALIZAR,
+     MATRICULAS."MATRICULA" AS MATRICULAS_MATRICULA,
+     MATRICULAS."MODELO" AS MATRICULAS_MODELO,
+     PERSONALIZACION."VALORMO" AS PERSONALIZACION_VALORMO
+FROM
+     "PUBLIC"."MANOOBRA" MANOOBRA INNER JOIN "PUBLIC"."REPARACIONES" REPARACIONES ON MANOOBRA."IDR" = REPARACIONES."IDR"
+     INNER JOIN "PUBLIC"."MATRICULAS" MATRICULAS ON REPARACIONES."MATRICULA" = MATRICULAS."MATRICULA",
+     "PUBLIC"."PERSONALIZACION" PERSONALIZACION
+WHERE
+     FECHASALIDA BETWEEN $P{fechaInicio}AND$P{fechaFinal}
+ AND MANOOBRA."OPERARIO" = $P{op}
+ AND MANOOBRA."HORASTRABAJO" != 0]]>
+	</queryString>
+	<field name="PERSONALIZACION_LOGO" class="java.lang.String"/>
+	<field name="MANOOBRA_IDR" class="java.lang.Integer"/>
+	<field name="MANOOBRA_CONCEPTO" class="java.lang.String"/>
+	<field name="MANOOBRA_HORASTRABAJO" class="java.lang.Double"/>
+	<field name="MANOOBRA_TOTAL" class="java.lang.Double"/>
+	<field name="MANOOBRA_FECHA" class="java.sql.Date"/>
+	<field name="MANOOBRA_OPERARIO" class="java.lang.Integer"/>
+	<field name="REPARACIONES_IDR" class="java.lang.Long"/>
+	<field name="REPARACIONES_CUENTACLIENTE" class="java.lang.Integer"/>
+	<field name="REPARACIONES_MATRICULA" class="java.lang.String"/>
+	<field name="REPARACIONES_NFACTURA" class="java.lang.String"/>
+	<field name="REPARACIONES_TRABAJOSREALIZAR" class="java.lang.String"/>
+	<field name="MATRICULAS_MATRICULA" class="java.lang.String"/>
+	<field name="MATRICULAS_MODELO" class="java.lang.String"/>
+	<field name="PERSONALIZACION_VALORMO" class="java.lang.Integer"/>
+	<variable name="SUMA_HORAS" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{MANOOBRA_TOTAL}]]></variableExpression>
+	</variable>
+	<variable name="HORASXVALOR" class="java.lang.Double">
+		<variableExpression><![CDATA[$V{SUMA_HORAS}*$F{PERSONALIZACION_VALORMO}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="99" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="94" height="50" uuid="ff912c81-65eb-48ab-bceb-eeec49ce0305"/>
+				<imageExpression><![CDATA[$F{PERSONALIZACION_LOGO}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="100" y="0" width="371" height="50" uuid="6a1a9cd0-c2b8-4264-af2c-6b78bb367cdf"/>
+				<textElement>
+					<font size="30"/>
+				</textElement>
+				<text><![CDATA[MANO OBRA OPERARIOS]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="98" width="555" height="1" uuid="1ceab949-97cd-4ecf-b869-afe86c1cbe68"/>
+			</line>
+			<textField>
+				<reportElement x="471" y="0" width="61" height="50" uuid="d7ec248e-9382-414e-b12d-30d9223a7d11"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="30" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{op}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="50" width="371" height="38" uuid="5b481073-87db-4b74-abfa-7fbdf6c6a571"/>
+				<textFieldExpression><![CDATA["DE "+$P{fechaInicio}+" A "+$P{fechaFinal}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="23" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="f9427ede-4fc9-4ebd-a12c-c718b251ab16"/>
+				<text><![CDATA[FECHA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="0" width="100" height="20" uuid="8e9ff95a-9e0d-4157-99e5-3564efb31a25"/>
+				<text><![CDATA[Nº REPARACION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="0" width="100" height="20" uuid="cb6c844f-bcc3-4a8e-9413-fa5182951193"/>
+				<text><![CDATA[MODELO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="300" y="0" width="100" height="20" uuid="46e4a954-73b9-4148-91db-83ff20c723a8"/>
+				<text><![CDATA[HORAS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="400" y="0" width="100" height="20" uuid="3023dd71-fff0-4fa6-ae55-eb391b7aa947"/>
+				<text><![CDATA[CONCEPTO]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="34" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20" uuid="1d1a8ae0-7874-49f5-a23f-5702c886cf90"/>
+				<textFieldExpression><![CDATA[$F{MANOOBRA_FECHA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="0" width="100" height="20" uuid="cdf0c8b3-6447-40e7-94ca-803f884cb0f2"/>
+				<textFieldExpression><![CDATA[$F{MANOOBRA_IDR}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="0" width="100" height="20" uuid="ba7f9213-0461-4092-878b-74034552a66a"/>
+				<textFieldExpression><![CDATA[$F{MATRICULAS_MODELO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="300" y="0" width="43" height="20" uuid="054a8538-c9e3-4960-9629-6b0ea3c41957"/>
+				<textFieldExpression><![CDATA[$F{MANOOBRA_TOTAL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="400" y="0" width="100" height="20" uuid="ba168f41-887b-43f6-bafd-6369cbde4b11"/>
+				<textFieldExpression><![CDATA[$F{MANOOBRA_CONCEPTO}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<textField>
+				<reportElement x="74" y="20" width="80" height="20" uuid="5b3c3518-f807-4c4a-bfad-a053aa70a72a"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="154" y="20" width="40" height="20" uuid="989f6d20-6d8f-423f-933f-d36fe391b67f"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="132" y="34" width="80" height="20" uuid="4b22ce90-c4d3-4662-a5ac-9155f20e2116"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="212" y="34" width="40" height="20" uuid="d98ef45d-dbbb-4e82-8168-ab92930a7c45"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="59" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="10" width="555" height="39" uuid="1039dfa3-1015-49c3-88ab-c3cd1df86ba6"/>
+				<textFieldExpression><![CDATA["HORAS OPERARIO "+$F{MANOOBRA_OPERARIO}+" : "+$V{SUMA_HORAS}+
+"TOTAL "+$V{HORASXVALOR}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="8" width="555" height="1" uuid="a498f8d7-fcfe-4758-b0e9-11e16934b228"/>
+			</line>
+			<line>
+				<reportElement x="0" y="52" width="555" height="1" uuid="d92803b4-f8f7-49af-afc4-da21bfb39f45"/>
+			</line>
+		</band>
+	</summary>
+</jasperReport>

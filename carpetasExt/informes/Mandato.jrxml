@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Mandato" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8a73da8f-a104-43a9-a487-7e74abae0f47">
+	<property name="ireport.zoom" value="1.0000000000000004"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="IDC" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     CLIENTES."IDC" AS CLIENTES_IDC,
+     CLIENTES."NOMBRE" AS CLIENTES_NOMBRE,
+     CLIENTES."DIRECCION" AS CLIENTES_DIRECCION,
+     CLIENTES."CIUDAD" AS CLIENTES_CIUDAD,
+     CLIENTES."PROVINCIA" AS CLIENTES_PROVINCIA,
+     CLIENTES."CODIGOPOSTAL" AS CLIENTES_CODIGOPOSTAL,
+     CLIENTES."TELEFONO" AS CLIENTES_TELEFONO,
+     CLIENTES."OBSERVACIONESCLIENTE" AS CLIENTES_OBSERVACIONESCLIENTE,
+     CLIENTES."NIF" AS CLIENTES_NIF,
+     REPARACIONES."IDR" AS REPARACIONES_IDR,
+     REPARACIONES."CUENTACLIENTE" AS REPARACIONES_CUENTACLIENTE,
+     REPARACIONES."MATRICULA" AS REPARACIONES_MATRICULA,
+     REPARACIONES."KM" AS REPARACIONES_KM,
+     REPARACIONES."FECHAENTRADA" AS REPARACIONES_FECHAENTRADA,
+     REPARACIONES."FECHASALIDA" AS REPARACIONES_FECHASALIDA,
+     REPARACIONES."NFACTURA" AS REPARACIONES_NFACTURA,
+     REPARACIONES."RECEPTOR" AS REPARACIONES_RECEPTOR,
+     REPARACIONES."TRABAJOSREALIZAR" AS REPARACIONES_TRABAJOSREALIZAR,
+     REPARACIONES."CUENTACLIENTE2" AS REPARACIONES_CUENTACLIENTE2,
+     REPARACIONES."NSINIESTRO" AS REPARACIONES_NSINIESTRO,
+     PERSONALIZACION."ID" AS PERSONALIZACION_ID,
+     PERSONALIZACION."NOMBREEMPRESA" AS PERSONALIZACION_NOMBREEMPRESA,
+     PERSONALIZACION."CIF" AS PERSONALIZACION_CIF,
+     PERSONALIZACION."DIRECCION" AS PERSONALIZACION_DIRECCION,
+     PERSONALIZACION."CODIGOPOSTAL" AS PERSONALIZACION_CODIGOPOSTAL,
+     PERSONALIZACION."CIUDAD" AS PERSONALIZACION_CIUDAD,
+     PERSONALIZACION."TELEFONO" AS PERSONALIZACION_TELEFONO,
+     PERSONALIZACION."EMAIL" AS PERSONALIZACION_EMAIL,
+     PERSONALIZACION."IVA" AS PERSONALIZACION_IVA,
+     PERSONALIZACION."VALORMO" AS PERSONALIZACION_VALORMO,
+     PERSONALIZACION."NOTAS" AS PERSONALIZACION_NOTAS,
+     PERSONALIZACION."LOGO" AS PERSONALIZACION_LOGO,
+     PERSONALIZACION."REGIND" AS PERSONALIZACION_REGIND,
+     PERSONALIZACION."REGESP" AS PERSONALIZACION_REGESP,
+     PERSONALIZACION."CUENTABANCO" AS PERSONALIZACION_CUENTABANCO,
+     PERSONALIZACION."TEXTOORDEN" AS PERSONALIZACION_TEXTOORDEN,
+     PERSONALIZACION."TEXTOPRESUPUESTO" AS PERSONALIZACION_TEXTOPRESUPUESTO,
+     PERSONALIZACION."TEXTOFACTURA" AS PERSONALIZACION_TEXTOFACTURA,
+     PERSONALIZACION."RUTAINFORMES" AS PERSONALIZACION_RUTAINFORMES,
+     PERSONALIZACION."RUTAIMGFONDO" AS PERSONALIZACION_RUTAIMGFONDO,
+     PERSONALIZACION."RUTAAGENDA" AS PERSONALIZACION_RUTAAGENDA,
+     PERSONALIZACION."RUTABANCO" AS PERSONALIZACION_RUTABANCO,
+     PERSONALIZACION."RUTAEXCEL" AS PERSONALIZACION_RUTAEXCEL,
+     PERSONALIZACION."RUTADRIVE" AS PERSONALIZACION_RUTADRIVE,
+     PERSONALIZACION."RUTACORREO" AS PERSONALIZACION_RUTACORREO,
+     PERSONALIZACION."NFACTURA" AS PERSONALIZACION_NFACTURA,
+     PERSONALIZACION."LOOKANDFEEL" AS PERSONALIZACION_LOOKANDFEEL
+FROM
+     "PUBLIC"."CLIENTES" CLIENTES,
+     "PUBLIC"."REPARACIONES" REPARACIONES,
+     "PUBLIC"."PERSONALIZACION" PERSONALIZACION
+WHERE
+     IDC = $P{IDC}]]>
+	</queryString>
+	<field name="CLIENTES_IDC" class="java.lang.Integer"/>
+	<field name="CLIENTES_NOMBRE" class="java.lang.String"/>
+	<field name="CLIENTES_DIRECCION" class="java.lang.String"/>
+	<field name="CLIENTES_CIUDAD" class="java.lang.String"/>
+	<field name="CLIENTES_PROVINCIA" class="java.lang.String"/>
+	<field name="CLIENTES_CODIGOPOSTAL" class="java.lang.String"/>
+	<field name="CLIENTES_TELEFONO" class="java.lang.String"/>
+	<field name="CLIENTES_OBSERVACIONESCLIENTE" class="java.lang.String"/>
+	<field name="CLIENTES_NIF" class="java.lang.String"/>
+	<field name="REPARACIONES_IDR" class="java.lang.Integer"/>
+	<field name="REPARACIONES_CUENTACLIENTE" class="java.lang.Integer"/>
+	<field name="REPARACIONES_MATRICULA" class="java.lang.String"/>
+	<field name="REPARACIONES_KM" class="java.lang.Integer"/>
+	<field name="REPARACIONES_FECHAENTRADA" class="java.sql.Date"/>
+	<field name="REPARACIONES_FECHASALIDA" class="java.sql.Date"/>
+	<field name="REPARACIONES_NFACTURA" class="java.lang.String"/>
+	<field name="REPARACIONES_RECEPTOR" class="java.lang.Integer"/>
+	<field name="REPARACIONES_TRABAJOSREALIZAR" class="java.lang.String"/>
+	<field name="REPARACIONES_CUENTACLIENTE2" class="java.lang.Integer"/>
+	<field name="REPARACIONES_NSINIESTRO" class="java.lang.String"/>
+	<field name="PERSONALIZACION_ID" class="java.lang.Long"/>
+	<field name="PERSONALIZACION_NOMBREEMPRESA" class="java.lang.String"/>
+	<field name="PERSONALIZACION_CIF" class="java.lang.String"/>
+	<field name="PERSONALIZACION_DIRECCION" class="java.lang.String"/>
+	<field name="PERSONALIZACION_CODIGOPOSTAL" class="java.lang.String"/>
+	<field name="PERSONALIZACION_CIUDAD" class="java.lang.String"/>
+	<field name="PERSONALIZACION_TELEFONO" class="java.lang.String"/>
+	<field name="PERSONALIZACION_EMAIL" class="java.lang.String"/>
+	<field name="PERSONALIZACION_IVA" class="java.lang.Integer"/>
+	<field name="PERSONALIZACION_VALORMO" class="java.lang.Integer"/>
+	<field name="PERSONALIZACION_NOTAS" class="java.sql.Clob"/>
+	<field name="PERSONALIZACION_LOGO" class="java.lang.String"/>
+	<field name="PERSONALIZACION_REGIND" class="java.lang.String"/>
+	<field name="PERSONALIZACION_REGESP" class="java.lang.String"/>
+	<field name="PERSONALIZACION_CUENTABANCO" class="java.lang.String"/>
+	<field name="PERSONALIZACION_TEXTOORDEN" class="java.lang.String"/>
+	<field name="PERSONALIZACION_TEXTOPRESUPUESTO" class="java.lang.String"/>
+	<field name="PERSONALIZACION_TEXTOFACTURA" class="java.lang.String"/>
+	<field name="PERSONALIZACION_RUTAINFORMES" class="java.lang.String"/>
+	<field name="PERSONALIZACION_RUTAIMGFONDO" class="java.lang.String"/>
+	<field name="PERSONALIZACION_RUTAAGENDA" class="java.lang.String"/>
+	<field name="PERSONALIZACION_RUTABANCO" class="java.lang.String"/>
+	<field name="PERSONALIZACION_RUTAEXCEL" class="java.lang.String"/>
+	<field name="PERSONALIZACION_RUTADRIVE" class="java.lang.String"/>
+	<field name="PERSONALIZACION_RUTACORREO" class="java.lang.String"/>
+	<field name="PERSONALIZACION_NFACTURA" class="java.lang.Integer"/>
+	<field name="PERSONALIZACION_LOOKANDFEEL" class="java.lang.String"/>
+	<title>
+		<band height="114" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="257" height="114" uuid="1d655e59-6042-4d1a-afc6-6c238f225e17"/>
+				<imageExpression><![CDATA[$F{PERSONALIZACION_RUTAIMGFONDO}]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="688" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="17" width="555" height="28" uuid="4db94ee1-481f-4572-87a9-8f5fc7d506e1"/>
+				<textElement textAlignment="Center">
+					<font size="13" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[CONSEJO GENERAL DE COLEGIOS DE GESTORES ADMINISTRATIVOS DE ESPAÑA]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="59" width="555" height="20" uuid="5a90eee7-13fc-472f-9d0f-351571ad2e92"/>
+				<textFieldExpression><![CDATA["D."+$F{CLIENTES_NOMBRE}+" con DNI Nº "+$F{CLIENTES_NIF}+" y"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="79" width="555" height="20" uuid="d1ab73c3-b103-451b-a896-e1fe22b21226"/>
+				<textFieldExpression><![CDATA[$F{PERSONALIZACION_NOMBREEMPRESA}+" con DNI Nº "+$F{PERSONALIZACION_CIF}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="99" width="555" height="20" uuid="32f2bb5d-a28b-4446-a7f5-8dfe327ae62f"/>
+				<text><![CDATA[declara/declaran tener pder suficiente para actuar en nombre y representacion de la entidad]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="119" width="555" height="20" uuid="b2e6fa3f-75ce-4873-b538-b54f111fe648"/>
+				<textFieldExpression><![CDATA[$F{PERSONALIZACION_NOMBREEMPRESA}+" con CIF Nº "+$F{PERSONALIZACION_CIF}+" y"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="139" width="555" height="20" uuid="2ba4517c-06d3-4877-880b-0ffa1ef1e8e7"/>
+				<textFieldExpression><![CDATA["domicilio a efectos de notificaciones en"+$F{PERSONALIZACION_CIUDAD}+" calle "+$F{PERSONALIZACION_DIRECCION}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="159" width="555" height="20" uuid="e9134e77-ff31-4528-b029-b6dd95894e00"/>
+				<textFieldExpression><![CDATA["Codigo postal"+$F{PERSONALIZACION_CODIGOPOSTAL}+" en concepto de MANDANTE,manifiesta:"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="196" width="555" height="43" uuid="a4682249-7ac2-41ae-872a-05eea45d5620"/>
+				<text><![CDATA[Que por el presente documento confiere MANDATO CON REPRESENTACIÓN a favor de D.JUAN CARLOS GOMEZ MORENO, Gestor Administrativo en ejercicio, colegiado número 1635, perteneciente al Colegio Oficial de Gestores Administrativos de Madrid, con domicilio en Madrid, calle Antonio Arias n° 6 C.P. 28009, en concepto de MANDATARIO:
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="239" width="555" height="65" uuid="45c91c21-43a7-495a-b627-c2649a79c20f"/>
+				<text><![CDATA[Que el presente MANDATO, que se regirá por los artículos 1709 a 1739 del Código Civil, se confiere al amparo del artículo 5 de la Ley 39/2015, de 1 de octubre, del Procedimiento Administrativo Común de las Administraciones Públicas y del artículo 1 del Estatuto Orgánico de la Profesión de Gestor Administrativo, aprobado por Decreto 424/1963, para que promueva, solicite y realice todos los trámites necesarios en relación con el siguiente ASUNTO:
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="304" width="555" height="20" uuid="10b7443c-d876-4dfc-9759-a328f30a60cf"/>
+				<text><![CDATA[	TRANSFERENCIA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="336" width="555" height="174" uuid="4d5f1125-e641-44c3-b0eb-9196e3f399dd"/>
+				<text><![CDATA[Que el presente MANDATO se confiere para su actuación ante todos los órganos y entidades de la Administración del Estado, Autonómica, Provincial y Local que resulten competentes, en relación con los trámites del asunto objeto de este MANDATO, y especificamente ante la Dirección General de Tráfico del Ministerio del Interior del Gobierno de España.
+Que asimismo autoriza al mandatario para que utilice a sus efectos el servicio centralizado del Colegio de Gestores Administrativos de MADRID, y para que nombre sustituto a favor de un Gestor Administrativo colegiado, y declara bajo su responsabilidad que entrega al Gestor Administrativo los documentos necesarios y exigidos por la normativa vigente, que son auténticos y su contenido enteramente correcto. Que conoce y acepta que los datos que se suministran pueden incorporarse a ficheros automatizados de los que serán responsables el Gestor Administrativo al que se le otorga el MANDATO, el Colegio Oficial de Gestores Administrativos y el Consejo General citados, con el único objeto de posibilitar la prestación de los servicios profesionales objeto del presente MANDATO y el cumplimiento por estos de las obligaciones derivadas del trámite encomendado, pudiendo ejercitar ante los mismos, en su caso, los derechos de acceso, rectificación, cancelación y oposición, de conformidad con la Ley Orgánica 15/1999, de 13 de diciembre.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="510" width="555" height="48" uuid="cfd6f06d-d3b1-4c8d-a39a-c3cdee643cac"/>
+				<text><![CDATA[Que el MANDATARIO acepta el MANDATO conferido y se obliga a cumplirlo de conformidad con las instrucciones del mandante, y declaro bajo mi responsabilidad que los documentos recibidos del mandante han sido verificados en cuanto a la corrección formal de los datos contenidos en los mismos.
+]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="558" width="219" height="25" uuid="df5d36b7-b3c1-40d4-8a72-3ab0ec0cfab6"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["En "+$F{PERSONALIZACION_CIUDAD}+" a "]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="219" y="558" width="336" height="25" uuid="0d76936d-1526-4846-9d76-289c3f61c2aa"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="662" width="257" height="20" uuid="e85732f4-7a14-40ed-9620-5f82ac7655f6"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[EL MANDANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="257" y="662" width="298" height="20" uuid="e021228f-7756-441c-9e0f-2aed80cc3f34"/>
+				<textElement textAlignment="Center">
+					<font isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[EL MANDATARIO]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+</jasperReport>

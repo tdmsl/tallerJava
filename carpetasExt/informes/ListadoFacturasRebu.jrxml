@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ListadoFacturasRebu" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="62ff8dac-98d8-4c1b-8617-bf732e218325">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="116"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="fechaInicio" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fechaFinal" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+( SELECT COALESCE ( SUM(REBU.VALOR_VENTA),0)
+  FROM REBU)AS TOTAL,
+
+     PERSONALIZACION."ID" AS PERSONALIZACION_ID,
+     PERSONALIZACION."NOMBREEMPRESA" AS PERSONALIZACION_NOMBREEMPRESA,
+     PERSONALIZACION."CIF" AS PERSONALIZACION_CIF,
+     PERSONALIZACION."DIRECCION" AS PERSONALIZACION_DIRECCION,
+     PERSONALIZACION."CODIGOPOSTAL" AS PERSONALIZACION_CODIGOPOSTAL,
+     PERSONALIZACION."CIUDAD" AS PERSONALIZACION_CIUDAD,
+     PERSONALIZACION."TELEFONO" AS PERSONALIZACION_TELEFONO,
+     PERSONALIZACION."EMAIL" AS PERSONALIZACION_EMAIL,
+     PERSONALIZACION."IVA" AS PERSONALIZACION_IVA,
+     PERSONALIZACION."VALORMO" AS PERSONALIZACION_VALORMO,
+     PERSONALIZACION."NOTAS" AS PERSONALIZACION_NOTAS,
+     PERSONALIZACION."LOGO" AS PERSONALIZACION_LOGO,
+     PERSONALIZACION."REGIND" AS PERSONALIZACION_REGIND,
+     PERSONALIZACION."REGESP" AS PERSONALIZACION_REGESP,
+     PERSONALIZACION."CUENTABANCO" AS PERSONALIZACION_CUENTABANCO,
+     PERSONALIZACION."TEXTOORDEN" AS PERSONALIZACION_TEXTOORDEN,
+     PERSONALIZACION."TEXTOPRESUPUESTO" AS PERSONALIZACION_TEXTOPRESUPUESTO,
+     PERSONALIZACION."TEXTOFACTURA" AS PERSONALIZACION_TEXTOFACTURA,
+     PERSONALIZACION."RUTAINFORMES" AS PERSONALIZACION_RUTAINFORMES,
+     PERSONALIZACION."RUTAIMGFONDO" AS PERSONALIZACION_RUTAIMGFONDO,
+     PERSONALIZACION."RUTAAGENDA" AS PERSONALIZACION_RUTAAGENDA,
+     PERSONALIZACION."RUTABANCO" AS PERSONALIZACION_RUTABANCO,
+     PERSONALIZACION."RUTAEXCEL" AS PERSONALIZACION_RUTAEXCEL,
+     PERSONALIZACION."RUTADRIVE" AS PERSONALIZACION_RUTADRIVE,
+     PERSONALIZACION."RUTACORREO" AS PERSONALIZACION_RUTACORREO,
+     PERSONALIZACION."NFACTURA" AS PERSONALIZACION_NFACTURA,
+     PERSONALIZACION."LOOKANDFEEL" AS PERSONALIZACION_LOOKANDFEEL,
+     PERSONALIZACION."TEXTOFACTURAREBU" AS PERSONALIZACION_TEXTOFACTURAREBU,
+     REBU."NFACTURA" AS REBU_NFACTURA,
+     REBU."IDR" AS REBU_IDR,
+     REBU."VALOR_COMPRA" AS REBU_VALOR_COMPRA,
+     REBU."VALOR_VENTA" AS REBU_VALOR_VENTA,
+     REBU."FECHA_COMPRA" AS REBU_FECHA_COMPRA,
+     REBU."FECHA_VENTA" AS REBU_FECHA_VENTA,
+     REPARACIONES."IDR" AS REPARACIONES_IDR,
+     REPARACIONES."CUENTACLIENTE" AS REPARACIONES_CUENTACLIENTE,
+     REPARACIONES."MATRICULA" AS REPARACIONES_MATRICULA,
+     REPARACIONES."KM" AS REPARACIONES_KM,
+     REPARACIONES."FECHAENTRADA" AS REPARACIONES_FECHAENTRADA,
+     REPARACIONES."FECHASALIDA" AS REPARACIONES_FECHASALIDA,
+     REPARACIONES."NFACTURA" AS REPARACIONES_NFACTURA,
+     REPARACIONES."RECEPTOR" AS REPARACIONES_RECEPTOR,
+     REPARACIONES."TRABAJOSREALIZAR" AS REPARACIONES_TRABAJOSREALIZAR,
+     REPARACIONES."CUENTACLIENTE2" AS REPARACIONES_CUENTACLIENTE2,
+     REPARACIONES."NSINIESTRO" AS REPARACIONES_NSINIESTRO,
+     CLIENTES."IDC" AS CLIENTES_IDC,
+     CLIENTES."NOMBRE" AS CLIENTES_NOMBRE,
+     CLIENTES."DIRECCION" AS CLIENTES_DIRECCION,
+     CLIENTES."CIUDAD" AS CLIENTES_CIUDAD,
+     CLIENTES."PROVINCIA" AS CLIENTES_PROVINCIA,
+     CLIENTES."CODIGOPOSTAL" AS CLIENTES_CODIGOPOSTAL,
+     CLIENTES."TELEFONO" AS CLIENTES_TELEFONO,
+     CLIENTES."OBSERVACIONESCLIENTE" AS CLIENTES_OBSERVACIONESCLIENTE,
+     CLIENTES."NIF" AS CLIENTES_NIF
+FROM
+ REPARACIONES INNER JOIN
+REBU
+ ON
+ REPARACIONES.IDR = REBU.IDR
+ INNER JOIN
+ CLIENTES
+ ON
+REPARACIONES.CUENTACLIENTE2 = CLIENTES.IDC,
+     "PUBLIC"."PERSONALIZACION" PERSONALIZACION
+
+WHERE
+     FECHA_VENTA BETWEEN $P{fechaInicio}AND$P{fechaFinal}]]>
+	</queryString>
+	<field name="TOTAL" class="java.lang.Double"/>
+	<field name="PERSONALIZACION_ID" class="java.lang.Long"/>
+	<field name="PERSONALIZACION_NOMBREEMPRESA" class="java.lang.String"/>
+	<field name="PERSONALIZACION_CIF" class="java.lang.String"/>
+	<field name="PERSONALIZACION_DIRECCION" class="java.lang.String"/>
+	<field name="PERSONALIZACION_CODIGOPOSTAL" class="java.lang.String"/>
+	<field name="PERSONALIZACION_CIUDAD" class="java.lang.String"/>
+	<field name="PERSONALIZACION_TELEFONO" class="java.lang.String"/>
+	<field name="PERSONALIZACION_EMAIL" class="java.lang.String"/>
+	<field name="PERSONALIZACION_IVA" class="java.lang.Integer"/>
+	<field name="PERSONALIZACION_VALORMO" class="java.lang.Integer"/>
+	<field name="PERSONALIZACION_NOTAS" class="java.sql.Clob"/>
+	<field name="PERSONALIZACION_LOGO" class="java.lang.String"/>
+	<field name="PERSONALIZACION_REGIND" class="java.lang.String"/>
+	<field name="PERSONALIZACION_REGESP" class="java.lang.String"/>
+	<field name="PERSONALIZACION_CUENTABANCO" class="java.lang.String"/>
+	<field name="PERSONALIZACION_TEXTOORDEN" class="java.lang.String"/>
+	<field name="PERSONALIZACION_TEXTOPRESUPUESTO" class="java.lang.String"/>
+	<field name="PERSONALIZACION_TEXTOFACTURA" class="java.lang.String"/>
+	<field name="PERSONALIZACION_RUTAINFORMES" class="java.lang.String"/>
+	<field name="PERSONALIZACION_RUTAIMGFONDO" class="java.lang.String"/>
+	<field name="PERSONALIZACION_RUTAAGENDA" class="java.lang.String"/>
+	<field name="PERSONALIZACION_RUTABANCO" class="java.lang.String"/>
+	<field name="PERSONALIZACION_RUTAEXCEL" class="java.lang.String"/>
+	<field name="PERSONALIZACION_RUTADRIVE" class="java.lang.String"/>
+	<field name="PERSONALIZACION_RUTACORREO" class="java.lang.String"/>
+	<field name="PERSONALIZACION_NFACTURA" class="java.lang.Integer"/>
+	<field name="PERSONALIZACION_LOOKANDFEEL" class="java.lang.String"/>
+	<field name="PERSONALIZACION_TEXTOFACTURAREBU" class="java.lang.String"/>
+	<field name="REBU_NFACTURA" class="java.lang.Integer"/>
+	<field name="REBU_IDR" class="java.lang.Integer"/>
+	<field name="REBU_VALOR_COMPRA" class="java.lang.Double"/>
+	<field name="REBU_VALOR_VENTA" class="java.lang.Double"/>
+	<field name="REBU_FECHA_COMPRA" class="java.sql.Date"/>
+	<field name="REBU_FECHA_VENTA" class="java.sql.Date"/>
+	<field name="REPARACIONES_IDR" class="java.lang.Integer"/>
+	<field name="REPARACIONES_CUENTACLIENTE" class="java.lang.Integer"/>
+	<field name="REPARACIONES_MATRICULA" class="java.lang.String"/>
+	<field name="REPARACIONES_KM" class="java.lang.Integer"/>
+	<field name="REPARACIONES_FECHAENTRADA" class="java.sql.Date"/>
+	<field name="REPARACIONES_FECHASALIDA" class="java.sql.Date"/>
+	<field name="REPARACIONES_NFACTURA" class="java.lang.String"/>
+	<field name="REPARACIONES_RECEPTOR" class="java.lang.Integer"/>
+	<field name="REPARACIONES_TRABAJOSREALIZAR" class="java.lang.String"/>
+	<field name="REPARACIONES_CUENTACLIENTE2" class="java.lang.Integer"/>
+	<field name="REPARACIONES_NSINIESTRO" class="java.lang.String"/>
+	<field name="CLIENTES_IDC" class="java.lang.Integer"/>
+	<field name="CLIENTES_NOMBRE" class="java.lang.String"/>
+	<field name="CLIENTES_DIRECCION" class="java.lang.String"/>
+	<field name="CLIENTES_CIUDAD" class="java.lang.String"/>
+	<field name="CLIENTES_PROVINCIA" class="java.lang.String"/>
+	<field name="CLIENTES_CODIGOPOSTAL" class="java.lang.String"/>
+	<field name="CLIENTES_TELEFONO" class="java.lang.String"/>
+	<field name="CLIENTES_OBSERVACIONESCLIENTE" class="java.lang.String"/>
+	<field name="CLIENTES_NIF" class="java.lang.String"/>
+	<variable name="diff" class="java.lang.Number">
+		<variableExpression><![CDATA[$F{REBU_VALOR_VENTA}-$F{REBU_VALOR_COMPRA}]]></variableExpression>
+	</variable>
+	<variable name="TOTAL" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{REBU_VALOR_VENTA}-$F{REBU_VALOR_COMPRA}]]></variableExpression>
+	</variable>
+	<variable name="TOTALBASE" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[($F{REBU_VALOR_VENTA}-$F{REBU_VALOR_COMPRA})/1.21]]></variableExpression>
+	</variable>
+	<variable name="TOTALIVA" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[(($F{REBU_VALOR_VENTA}-$F{REBU_VALOR_COMPRA})/1.21)*0.21]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="51" splitType="Stretch">
+			<textField pattern="MM/dd/yyyy">
+				<reportElement x="558" y="15" width="78" height="23" uuid="88660ca6-d59d-4c27-8a67-a874e4464361"/>
+				<textFieldExpression><![CDATA[$P{fechaInicio}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="137" y="1" width="353" height="50" uuid="f3071046-d751-42cb-8c81-f2dfa979991d"/>
+				<textElement>
+					<font size="30"/>
+				</textElement>
+				<text><![CDATA[Listados Facturas REBU]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="1" width="137" height="50" uuid="57582844-f4ed-4757-92ad-796728df8316"/>
+				<imageExpression><![CDATA[$F{PERSONALIZACION_LOGO}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="636" y="15" width="15" height="23" uuid="b20550b4-d580-4005-903b-bd08e9d32301"/>
+				<text><![CDATA[al]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="651" y="15" width="100" height="23" uuid="f5b1a2f7-a432-41ae-adce-8bb2fdfeb54f"/>
+				<textFieldExpression><![CDATA[$P{fechaFinal}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="534" y="15" width="24" height="23" uuid="21c048b1-e58b-4100-b5fa-ba563fe846ec"/>
+				<text><![CDATA[Del]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<line>
+				<reportElement x="18" y="16" width="770" height="1" uuid="49b9dc30-0736-43db-bbbd-a212a897f7b6"/>
+			</line>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="24" splitType="Stretch">
+			<staticText>
+				<reportElement x="125" y="1" width="70" height="23" uuid="86204853-2f2f-4f3c-b9c1-d1cb1b7e8213"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Precio Compra]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="52" height="20" uuid="00685a3d-ed4c-4a93-a30c-dc595f06c06b"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nº Factura]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="651" y="3" width="76" height="20" uuid="6a60087c-ec64-44dd-b36a-105ed875be9e"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="727" y="3" width="75" height="17" uuid="3ac4096c-be88-4be8-9086-06a28f341bf6"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[CIF]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="414" y="1" width="76" height="23" uuid="ddb39067-2054-4e7f-803e-feaa116f70d6"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Base Imponible]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="490" y="1" width="62" height="23" uuid="760ec99c-70d6-4ad1-ba65-62b61aec8cb1"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[IVA 21%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="52" y="0" width="73" height="23" uuid="ed09f3b3-37ae-4c3b-b650-473aa643842b"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha Compra]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="205" y="1" width="67" height="23" uuid="9b049180-a96c-428f-baeb-dda4cc5f04f3"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha Venta]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="352" y="0" width="61" height="23" uuid="406a4bb7-dbc9-49c2-adb4-d3b98ede81ee"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Diferencia Bruto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="272" y="1" width="80" height="23" uuid="4b66bd53-6ffb-417f-aa47-a5ba46f91081"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Precio Venta]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="587" y="3" width="64" height="20" uuid="70e2a8fc-1eff-49e0-a9ea-ce5b6809070a"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Model]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="28" splitType="Stretch">
+			<textField pattern="#,##0.00">
+				<reportElement x="125" y="0" width="70" height="20" uuid="2e1f2171-6b43-40b8-8926-498444f1f427"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{REBU_VALOR_COMPRA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="352" y="0" width="61" height="20" uuid="bf32bebb-0b58-454d-9f53-54e00b1b68da"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{REBU_VALOR_VENTA}-$F{REBU_VALOR_COMPRA}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="490" y="0" width="62" height="20" uuid="1fab6426-5c8a-4088-9741-66e67ecded3a"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[(($F{REBU_VALOR_VENTA}-$F{REBU_VALOR_COMPRA})/1.21)*0.21]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="651" y="0" width="76" height="20" uuid="5ba0ea47-0b68-452d-b20c-f63993b1a8d6"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{CLIENTES_NOMBRE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="727" y="0" width="75" height="20" uuid="2362ada4-e2aa-4ff0-a76f-fe5ed9b7db33"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{CLIENTES_NIF}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="52" height="20" uuid="3f140871-22e8-4062-8eb9-8e25840d6a02"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{REBU_NFACTURA}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="52" y="0" width="73" height="20" uuid="9f125484-34bf-4abd-8f85-aaf482800668"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{REBU_FECHA_VENTA}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="205" y="0" width="67" height="20" uuid="2b9a1822-8423-4d9e-b5e4-97adf84d3c0b"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{REBU_FECHA_VENTA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="587" y="0" width="64" height="20" uuid="89957fe0-7711-4251-bfc4-4ad3d992be8b"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{REPARACIONES_MATRICULA}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="272" y="0" width="80" height="20" uuid="4f0ecbc5-93df-4235-99d2-06dd7d1f88fe"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{REBU_VALOR_VENTA}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="414" y="0" width="76" height="20" uuid="f0119d5f-19e0-4fec-b178-9530a29efb93"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[($F{REBU_VALOR_VENTA}-$F{REBU_VALOR_COMPRA})/1.21]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="32" splitType="Stretch">
+			<textField>
+				<reportElement x="668" y="0" width="80" height="20" uuid="5e06bc96-9cac-45d5-b6e5-3a9c4b2adbd3"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="95" splitType="Stretch">
+			<textField evaluationTime="Report">
+				<reportElement x="687" y="60" width="40" height="20" uuid="d4844766-0bfe-4494-b916-81525057bdfe"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="184" y="13" width="176" height="47" uuid="c6d3f9b8-4d5b-4ce1-b065-8d42355003d4"/>
+				<textFieldExpression><![CDATA["Total Base Imponible\n"+NumberFormat.getCurrencyInstance().format($V{TOTALBASE})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="37" y="13" width="100" height="47" uuid="fbcde2dc-fee3-4e58-8213-207f051a5fbc"/>
+				<textFieldExpression><![CDATA["TOTAL\n"+NumberFormat.getCurrencyInstance().format($V{TOTAL})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="390" y="13" width="100" height="47" uuid="577b879c-f4e2-41ac-b354-9a740c68174e"/>
+				<textFieldExpression><![CDATA["Total IVA\n"+NumberFormat.getCurrencyInstance().format($V{TOTALIVA})]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

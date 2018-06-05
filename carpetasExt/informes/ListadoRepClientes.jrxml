@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RepClientes" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="cb1a7089-bcb3-44fc-a0cb-926141ed4b2d">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="fechaInicio" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fechaFinal" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="idc" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     ( SELECT COALESCE ( SUM(MATERIALES."TOTAL"),0)FROM MATERIALES  WHERE MATERIALES."IDR" = REPARACIONES."IDR")AS SUMA_MAT,
+     ( SELECT COALESCE ( SUM(TRABAJOSEXT."PVP"),0)FROM TRABAJOSEXT  WHERE TRABAJOSEXT."IDR" = REPARACIONES."IDR")AS SUMA_TEXT,
+     ( SELECT COALESCE ( SUM(MANOOBRA."TOTAL"),0)FROM MANOOBRA
+WHERE MANOOBRA."IDR" = REPARACIONES."IDR")AS SUMA_MO,
+     PERSONALIZACION."LOGO" AS PERSONALIZACION_LOGO,
+     REPARACIONES."IDR" AS REPARACIONES_IDR,
+     REPARACIONES."CUENTACLIENTE" AS REPARACIONES_CUENTACLIENTE,
+     REPARACIONES."MATRICULA" AS REPARACIONES_MATRICULA,
+     REPARACIONES."FECHASALIDA" AS REPARACIONES_FECHASALIDA,
+     REPARACIONES."NFACTURA" AS REPARACIONES_NFACTURA,
+     REPARACIONES."RECEPTOR" AS REPARACIONES_RECEPTOR,
+     REPARACIONES."TRABAJOSREALIZAR" AS REPARACIONES_TRABAJOSREALIZAR,
+     REPARACIONES."KM" AS REPARACIONES_KM,
+     CLIENTES."NOMBRE" AS CLIENTES_NOMBRE
+FROM
+     "PUBLIC"."PERSONALIZACION" PERSONALIZACION,
+     "PUBLIC"."REPARACIONES" REPARACIONES
+INNER JOIN CLIENTES
+ON REPARACIONES.CUENTACLIENTE = CLIENTES.IDC
+WHERE
+     REPARACIONES."FECHASALIDA" BETWEEN $P{fechaInicio} AND $P{fechaFinal}
+AND 
+     REPARACIONES."CUENTACLIENTE" = $P{idc}]]>
+	</queryString>
+	<field name="SUMA_MAT" class="java.lang.Double"/>
+	<field name="SUMA_TEXT" class="java.lang.Double"/>
+	<field name="SUMA_MO" class="java.lang.Double"/>
+	<field name="PERSONALIZACION_LOGO" class="java.lang.String"/>
+	<field name="REPARACIONES_IDR" class="java.lang.Integer"/>
+	<field name="REPARACIONES_CUENTACLIENTE" class="java.lang.Integer"/>
+	<field name="REPARACIONES_MATRICULA" class="java.lang.String"/>
+	<field name="REPARACIONES_FECHASALIDA" class="java.sql.Date"/>
+	<field name="REPARACIONES_NFACTURA" class="java.lang.String"/>
+	<field name="REPARACIONES_RECEPTOR" class="java.lang.Integer"/>
+	<field name="REPARACIONES_TRABAJOSREALIZAR" class="java.lang.String"/>
+	<field name="REPARACIONES_KM" class="java.lang.Integer"/>
+	<field name="CLIENTES_NOMBRE" class="java.lang.String"/>
+	<variable name="total" class="java.lang.Double">
+		<variableExpression><![CDATA[$F{SUMA_MAT}+$F{SUMA_TEXT}+$F{SUMA_MO}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="75" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="6" width="110" height="69" uuid="5f2b92c5-82e9-40aa-bee8-bd245bd665e7"/>
+				<imageExpression><![CDATA[$F{PERSONALIZACION_LOGO}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="110" y="0" width="361" height="35" uuid="1ebfd878-f402-44dc-8ffb-1dbc9ce4fccd"/>
+				<textElement>
+					<font size="26"/>
+				</textElement>
+				<text><![CDATA[REPARACIONES CLIENTE]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="484" y="0" width="59" height="35" uuid="54d2ee06-6533-46be-830c-1d1c2ee2ebc8"/>
+				<textElement>
+					<font size="24"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{idc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="110" y="35" width="351" height="34" uuid="cb5599ac-9eac-407a-894f-311b002b354f"/>
+				<textElement textAlignment="Center">
+					<font size="20"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CLIENTES_NOMBRE}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="11" width="555" height="1" uuid="d5a4f48b-dee8-4dcf-b15f-89dbd2e5eff7"/>
+			</line>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="52" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="5b7340e5-4368-4e39-8c16-4b9385467d79"/>
+				<text><![CDATA[FECHA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="0" width="100" height="20" uuid="f15fd82d-4aa0-4a5e-94d6-c4bcf889623d"/>
+				<text><![CDATA[IDR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="0" width="100" height="20" uuid="b607b629-ecbc-4b89-92b3-b1b9feeabce9"/>
+				<text><![CDATA[Nº FACTURA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="300" y="0" width="100" height="20" uuid="6a39dc04-da83-41e6-ae64-dcb162fa6b20"/>
+				<text><![CDATA[TRABAJOS A REALIZAR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="406" y="0" width="100" height="20" uuid="caff2ee3-4f60-4f03-8cb8-2d170e8c1bfa"/>
+				<text><![CDATA[KM]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="30" width="555" height="1" uuid="95b9e471-0e66-45de-9c3d-3ce2a40bd533"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="44" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20" uuid="9bbbaa6b-0a07-4bbb-8ed8-69409acd0108"/>
+				<textFieldExpression><![CDATA[$F{REPARACIONES_FECHASALIDA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="0" width="100" height="20" uuid="21910f17-36aa-4272-9228-3654b71c316e"/>
+				<textFieldExpression><![CDATA[$F{REPARACIONES_IDR}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="0" width="100" height="20" uuid="ef71a287-7906-4154-9d7c-9865bf2fdc05"/>
+				<textFieldExpression><![CDATA[$F{REPARACIONES_NFACTURA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="300" y="0" width="100" height="20" uuid="abece73a-d273-4cb8-b2a1-d3199b5e5cde"/>
+				<textFieldExpression><![CDATA[$F{REPARACIONES_TRABAJOSREALIZAR}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="406" y="0" width="100" height="20" uuid="a2057441-46c4-493b-b0c1-24c3ab0f5d48"/>
+				<textFieldExpression><![CDATA[$F{REPARACIONES_KM}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="351" y="26" width="80" height="20" uuid="bd02c766-bfb5-4c5f-b504-0ed08ea2f4d5"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="431" y="26" width="40" height="20" uuid="55fc6c2c-147b-4c21-8f26-9a0196282fe0"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="26" y="26" width="100" height="20" uuid="9bb94f66-5998-46ff-8f37-3f44d5b62f45"/>
+				<textFieldExpression><![CDATA["total facturado "+$V{total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

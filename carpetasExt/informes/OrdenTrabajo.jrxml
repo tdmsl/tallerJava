@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Orden Trabajo" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e6e7f5e2-fd26-46b1-84bf-5cbd7bc2f78a">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="IDR" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[SELECT
+     MATRICULAS."MATRICULA" AS MATRICULAS_MATRICULA,
+     MATRICULAS."IDCLIENTE" AS MATRICULAS_IDCLIENTE,
+     MATRICULAS."MARCA" AS MATRICULAS_MARCA,
+     MATRICULAS."MODELO" AS MATRICULAS_MODELO,
+     MATRICULAS."BASTIDOR" AS MATRICULAS_BASTIDOR,
+     MATRICULAS."CODIGO" AS MATRICULAS_CODIGO,
+     MATRICULAS."OBSERVACIONESMATRICULA" AS MATRICULAS_OBSERVACIONESMATRICULA,
+     REPARACIONES."IDR" AS REPARACIONES_IDR,
+     REPARACIONES."CUENTACLIENTE" AS REPARACIONES_CUENTACLIENTE,
+     REPARACIONES."MATRICULA" AS REPARACIONES_MATRICULA,
+     REPARACIONES."KM" AS REPARACIONES_KM,
+     REPARACIONES."FECHAENTRADA" AS REPARACIONES_FECHAENTRADA,
+     REPARACIONES."FECHASALIDA" AS REPARACIONES_FECHASALIDA,
+     REPARACIONES."NFACTURA" AS REPARACIONES_NFACTURA,
+     REPARACIONES."RECEPTOR" AS REPARACIONES_RECEPTOR,
+     REPARACIONES."TRABAJOSREALIZAR" AS REPARACIONES_TRABAJOSREALIZAR,
+     CLIENTES."IDC" AS CLIENTES_IDC,
+     CLIENTES."NOMBRE" AS CLIENTES_NOMBRE,
+     CLIENTES."DIRECCION" AS CLIENTES_DIRECCION,
+     CLIENTES."CIUDAD" AS CLIENTES_CIUDAD,
+     CLIENTES."PROVINCIA" AS CLIENTES_PROVINCIA,
+     CLIENTES."CODIGOPOSTAL" AS CLIENTES_CODIGOPOSTAL,
+     CLIENTES."TELEFONO" AS CLIENTES_TELEFONO,
+     CLIENTES."OBSERVACIONESCLIENTE" AS CLIENTES_OBSERVACIONESCLIENTE,
+     CLIENTES."NIF" AS CLIENTES_NIF,
+     PERSONALIZACION."ID" AS PERSONALIZACION_ID,
+     PERSONALIZACION."DIRECCION" AS PERSONALIZACION_DIRECCION,
+     PERSONALIZACION."CODIGOPOSTAL" AS PERSONALIZACION_CODIGOPOSTAL,
+     PERSONALIZACION."CIUDAD" AS PERSONALIZACION_CIUDAD,
+     PERSONALIZACION."TELEFONO" AS PERSONALIZACION_TELEFONO,
+     PERSONALIZACION."EMAIL" AS PERSONALIZACION_EMAIL,
+     PERSONALIZACION."IVA" AS PERSONALIZACION_IVA,
+     PERSONALIZACION."VALORMO" AS PERSONALIZACION_VALORMO,
+     PERSONALIZACION."NOTAS" AS PERSONALIZACION_NOTAS,
+     PERSONALIZACION."LOGO" AS PERSONALIZACION_LOGO,
+     PERSONALIZACION."REGIND" AS PERSONALIZACION_REGIND,
+     PERSONALIZACION."REGESP" AS PERSONALIZACION_REGESP,
+     PERSONALIZACION."CUENTABANCO" AS PERSONALIZACION_CUENTABANCO,
+     PERSONALIZACION."TEXTOORDEN" AS PERSONALIZACION_TEXTOORDEN,
+     PERSONALIZACION."TEXTOPRESUPUESTO" AS PERSONALIZACION_TEXTOPRESUPUESTO,
+     PERSONALIZACION."TEXTOFACTURA" AS PERSONALIZACION_TEXTOFACTURA,
+     PERSONALIZACION."RUTAINFORMES" AS PERSONALIZACION_RUTAINFORMES,
+     PERSONALIZACION."RUTAIMGFONDO" AS PERSONALIZACION_RUTAIMGFONDO,
+     PERSONALIZACION."RUTAAGENDA" AS PERSONALIZACION_RUTAAGENDA,
+     PERSONALIZACION."NOMBREEMPRESA" AS PERSONALIZACION_NOMBREEMPRESA,
+     PERSONALIZACION."CIF" AS PERSONALIZACION_CIF
+FROM
+     "PUBLIC"."MATRICULAS" MATRICULAS,
+     "PUBLIC"."REPARACIONES" REPARACIONES,
+     "PUBLIC"."CLIENTES" CLIENTES,
+     "PUBLIC"."PERSONALIZACION" PERSONALIZACION
+WHERE
+     IDR = $P{IDR}
+ AND IDC = CuentaCliente]]>
+	</queryString>
+	<field name="MATRICULAS_MATRICULA" class="java.lang.String"/>
+	<field name="MATRICULAS_IDCLIENTE" class="java.lang.Integer"/>
+	<field name="MATRICULAS_MARCA" class="java.lang.String"/>
+	<field name="MATRICULAS_MODELO" class="java.lang.String"/>
+	<field name="MATRICULAS_BASTIDOR" class="java.lang.String"/>
+	<field name="MATRICULAS_CODIGO" class="java.lang.String"/>
+	<field name="MATRICULAS_OBSERVACIONESMATRICULA" class="java.lang.String"/>
+	<field name="REPARACIONES_IDR" class="java.lang.Long"/>
+	<field name="REPARACIONES_CUENTACLIENTE" class="java.lang.Integer"/>
+	<field name="REPARACIONES_MATRICULA" class="java.lang.String"/>
+	<field name="REPARACIONES_KM" class="java.lang.Integer"/>
+	<field name="REPARACIONES_FECHAENTRADA" class="java.sql.Date"/>
+	<field name="REPARACIONES_FECHASALIDA" class="java.sql.Date"/>
+	<field name="REPARACIONES_NFACTURA" class="java.lang.String"/>
+	<field name="REPARACIONES_RECEPTOR" class="java.lang.Integer"/>
+	<field name="REPARACIONES_TRABAJOSREALIZAR" class="java.lang.String"/>
+	<field name="CLIENTES_IDC" class="java.lang.Long"/>
+	<field name="CLIENTES_NOMBRE" class="java.lang.String"/>
+	<field name="CLIENTES_DIRECCION" class="java.lang.String"/>
+	<field name="CLIENTES_CIUDAD" class="java.lang.String"/>
+	<field name="CLIENTES_PROVINCIA" class="java.lang.String"/>
+	<field name="CLIENTES_CODIGOPOSTAL" class="java.lang.String"/>
+	<field name="CLIENTES_TELEFONO" class="java.lang.String"/>
+	<field name="CLIENTES_OBSERVACIONESCLIENTE" class="java.lang.String"/>
+	<field name="CLIENTES_NIF" class="java.lang.String"/>
+	<field name="PERSONALIZACION_ID" class="java.lang.Long"/>
+	<field name="PERSONALIZACION_DIRECCION" class="java.lang.String"/>
+	<field name="PERSONALIZACION_CODIGOPOSTAL" class="java.lang.String"/>
+	<field name="PERSONALIZACION_CIUDAD" class="java.lang.String"/>
+	<field name="PERSONALIZACION_TELEFONO" class="java.lang.String"/>
+	<field name="PERSONALIZACION_EMAIL" class="java.lang.String"/>
+	<field name="PERSONALIZACION_IVA" class="java.lang.Integer"/>
+	<field name="PERSONALIZACION_VALORMO" class="java.lang.Integer"/>
+	<field name="PERSONALIZACION_NOTAS" class="java.sql.Clob"/>
+	<field name="PERSONALIZACION_LOGO" class="java.lang.String"/>
+	<field name="PERSONALIZACION_REGIND" class="java.lang.String"/>
+	<field name="PERSONALIZACION_REGESP" class="java.lang.String"/>
+	<field name="PERSONALIZACION_CUENTABANCO" class="java.lang.String"/>
+	<field name="PERSONALIZACION_TEXTOORDEN" class="java.lang.String"/>
+	<field name="PERSONALIZACION_TEXTOPRESUPUESTO" class="java.lang.String"/>
+	<field name="PERSONALIZACION_TEXTOFACTURA" class="java.lang.String"/>
+	<field name="PERSONALIZACION_RUTAINFORMES" class="java.lang.String"/>
+	<field name="PERSONALIZACION_RUTAIMGFONDO" class="java.lang.String"/>
+	<field name="PERSONALIZACION_RUTAAGENDA" class="java.lang.String"/>
+	<field name="PERSONALIZACION_NOMBREEMPRESA" class="java.lang.String"/>
+	<field name="PERSONALIZACION_CIF" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="522" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="fe72c050-0b42-4b3f-81a6-f0c473623260" x="280" y="14" width="181" height="20"/>
+				<textElement>
+					<font size="15"/>
+				</textElement>
+				<text><![CDATA[ORDEN DE TRABAJO Nº]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="745b0bcd-9113-41ed-a529-dd7dbea84da3" x="280" y="34" width="181" height="20"/>
+				<textElement>
+					<font size="15"/>
+				</textElement>
+				<text><![CDATA[FACTURA Nº]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="10fd4d5b-d2e1-4424-9d17-e530d1a9a121" x="473" y="14" width="50" height="20"/>
+				<textElement>
+					<font size="15"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{REPARACIONES_IDR}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement uuid="0acd6646-28f0-417e-a27d-691768d4d7e9" x="28" y="14" width="160" height="94"/>
+				<imageExpression><![CDATA[$F{PERSONALIZACION_LOGO}]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement uuid="06c0bd23-6ae3-45d0-ac81-f9921c359d5a" x="28" y="128" width="160" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{PERSONALIZACION_DIRECCION}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="86e4638b-a71f-46e7-94be-31d3c57ced45" x="28" y="138" width="59" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{PERSONALIZACION_CODIGOPOSTAL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d7448abd-acf0-4d96-8228-f9c46d0df254" x="88" y="138" width="102" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{PERSONALIZACION_CIUDAD}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b1d622df-ce73-4022-9038-c1184363f426" x="28" y="148" width="160" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{PERSONALIZACION_TELEFONO}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement uuid="b382fd5b-d741-4c1c-ab79-e3e07e7881ca" x="280" y="118" width="250" height="90"/>
+			</rectangle>
+			<textField>
+				<reportElement uuid="c02de90c-408c-4514-8d99-fa3d1656e977" x="286" y="128" width="175" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{CLIENTES_NOMBRE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="0592c8bf-cf45-462f-8f22-572c6eed9cce" x="461" y="128" width="62" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{CLIENTES_IDC}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="451b91aa-09e0-4183-833a-813d04d4b979" x="286" y="148" width="169" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{CLIENTES_DIRECCION}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="3274f473-86bc-41dc-b2b4-cac8b9a5eba1" x="286" y="168" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{CLIENTES_CODIGOPOSTAL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="504ec5cf-b5b1-4ad2-8cdd-8f3bbf290c48" x="344" y="168" width="75" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{CLIENTES_CIUDAD}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="ffbf9764-11c3-4ba8-ad56-f47672ce2c5e" x="286" y="188" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{CLIENTES_TELEFONO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d3759388-b9ba-44c4-9031-f52903bb8ee5" x="473" y="34" width="50" height="20"/>
+				<textElement>
+					<font size="15"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{REPARACIONES_NFACTURA}== null ?  "" : $F{REPARACIONES_NFACTURA}+""]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="bc467795-8518-4e31-92ef-4fcb5b8657c6" x="28" y="222" width="495" height="1"/>
+			</line>
+			<rectangle>
+				<reportElement uuid="3a07a00f-c06d-44df-abcb-aa854b531a6b" x="28" y="236" width="495" height="20"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="8b748d3a-3025-46c7-87af-5cab5a72ed7e" x="0" y="277" width="555" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TRABAJOS A REALIZAR]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="67594d34-012a-42d5-a244-c57b51e344c2" x="11" y="307" width="534" height="204"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+					<topPen lineWidth="1.0" lineStyle="Solid"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid"/>
+				</box>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{REPARACIONES_TRABAJOSREALIZAR}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="292152aa-a56c-4b3a-aa0f-a31385a25b9c" x="28" y="236" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{MATRICULAS_MARCA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d48b06eb-51cd-443d-97a7-de3db0721c89" x="128" y="236" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{MATRICULAS_MODELO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="4ad14ea7-fa13-4931-9e35-3d5141ced955" x="226" y="236" width="154" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{MATRICULAS_BASTIDOR}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a2ee888e-f99c-4774-8c60-020ecc8b0526" x="423" y="236" width="100" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{REPARACIONES_MATRICULA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="22c726ff-6d93-4412-aa74-dd65035e0ab9" x="423" y="65" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{REPARACIONES_FECHAENTRADA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b0563409-21ba-48c2-9af8-eb1e2553bd94" x="423" y="88" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{REPARACIONES_FECHASALIDA}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="3c290217-7391-4c13-93ff-f169ab15d8d5" x="286" y="68" width="100" height="17"/>
+				<textElement/>
+				<text><![CDATA[Fecha Entrada]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="8d8ae68e-8a1d-4da3-8658-2232dc8fab01" x="286" y="88" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Fecha Salida]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="f5e4c7dd-67ce-49a0-b3a9-843341b8bf9c" x="384" y="236" width="39" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{REPARACIONES_KM}+" Km"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="c579a6e7-0820-41ba-916a-1ffceadd2c1b" x="28" y="158" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{PERSONALIZACION_EMAIL}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageFooter>
+		<band height="99" splitType="Stretch">
+			<textField>
+				<reportElement uuid="1522ec7d-1b5f-462f-acdf-08b5bbe13619" x="473" y="69" width="34" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="d1789564-700c-40ac-ba83-8810767343ca" x="523" y="69" width="32" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="69ad023a-5d33-4e50-ac15-421fb0aa34f9" x="419" y="69" width="42" height="20"/>
+				<textElement/>
+				<text><![CDATA[Paguina]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="65290696-cf5f-486c-90a1-7749d55d7730" x="507" y="69" width="16" height="20"/>
+				<textElement/>
+				<text><![CDATA[de]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="f753d3a3-9f5b-4557-abfb-c2b04b13350d" x="0" y="6" width="555" height="53"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{PERSONALIZACION_TEXTOORDEN}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="a707e0e5-00e3-4302-a79e-b50ae0f06866" x="28" y="59" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Firma Cliente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="71d95c29-3f50-4a59-a3e9-715d7e0efe6e" x="224" y="59" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Firma Taller]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>

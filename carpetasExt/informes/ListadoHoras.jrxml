@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Listado Horas" pageWidth="595" pageHeight="842" whenNoDataType="BlankPage" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="18dc4144-a51a-4772-b9e5-d435fcffbd64">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="fecha" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ido" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="totMes" class="java.lang.Double"/>
+	<parameter name="mes" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="inicioMes" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="finMes" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select HO.IDO, FECHA AS CONTROLHORAS_FECHA, round(sum(datediff('minute',entrada, salida)/60.0),2) as horas ,personalizacion.logo AS PERSONALIZACION_LOGO,OP.NOMBRE AS OPERARIOS_NOMBRE
+from "PUBLIC".controlhoras HO,"PUBLIC".PERSONALIZACION, "PUBLIC".OPERARIOS OP
+where HO.IDO=$P{ido} 
+AND FECHA between $P{inicioMes} AND $P{finMes} AND HO.IDO=OP.IDO 
+group by HO.IDO, FECHA
+order by FECHA]]>
+	</queryString>
+	<field name="IDO" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="CONTROLHORAS_FECHA" class="java.sql.Date"/>
+	<field name="HORAS" class="java.math.BigDecimal"/>
+	<field name="PERSONALIZACION_LOGO" class="java.lang.String"/>
+	<field name="OPERARIOS_NOMBRE" class="java.lang.String"/>
+	<variable name="TOTAL" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="89" height="79" uuid="a006ab6b-297a-4b3e-b8be-8a3d16c49a58"/>
+				<imageExpression><![CDATA[$F{PERSONALIZACION_LOGO}]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="179" y="11" width="363" height="31" uuid="276c7d8b-defc-4bbb-8f73-7c95b6c93216"/>
+				<textElement>
+					<font size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Listado Horas "+$P{mes}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="179" y="42" width="363" height="32" uuid="47f3d95f-22b7-4304-a44b-815bc55a3521"/>
+				<textElement>
+					<font size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Operario "+$F{OPERARIOS_NOMBRE}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="44" splitType="Stretch">
+			<staticText>
+				<reportElement x="35" y="18" width="100" height="20" uuid="8961cce4-a5f3-411e-9664-67ce04c238b3"/>
+				<text><![CDATA[FECHA]]></text>
+			</staticText>
+			<line>
+				<reportElement x="13" y="6" width="529" height="1" uuid="ad5f321e-8039-4b19-af7b-acb11caadf9c"/>
+			</line>
+			<staticText>
+				<reportElement x="198" y="18" width="100" height="20" uuid="f58f0183-3ae3-4fbe-b8c4-8751e5b3fb49"/>
+				<text><![CDATA[HORAS]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="25" splitType="Stretch">
+			<textField>
+				<reportElement x="35" y="0" width="100" height="20" uuid="8a497524-54cc-416b-9ace-5d4bc46a6602"/>
+				<textFieldExpression><![CDATA[$F{CONTROLHORAS_FECHA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="198" y="5" width="100" height="20" uuid="6285fb23-f6d0-427f-9eb7-683d7ddc0195"/>
+				<textFieldExpression><![CDATA[$F{HORAS}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="23" splitType="Stretch">
+			<textField>
+				<reportElement x="427" y="0" width="100" height="20" uuid="fec8d73b-0a5e-4a97-8f02-7fdf89c6edf7"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="23">
+			<staticText>
+				<reportElement x="35" y="0" width="100" height="20" uuid="2a6b48fb-5c2b-49c7-8b5e-a4ab810cc65a"/>
+				<text><![CDATA[Total Mes]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="209" y="0" width="100" height="20" uuid="540baa13-b399-4bfc-9d91-d13988021c86"/>
+				<textFieldExpression><![CDATA[$P{totMes}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Facturas" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d6ee5646-0c94-4406-ab33-0733eb751510">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="fechaInicio" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fechaFinal" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     ( SELECT COALESCE ( SUM(MATERIALES."TOTAL"),0)FROM MATERIALES  WHERE MATERIALES."IDR" = REPARACIONES."IDR")AS SUMA_MAT,
+     ( SELECT COALESCE ( SUM(TRABAJOSEXT."PVP"),0)FROM TRABAJOSEXT  WHERE TRABAJOSEXT."IDR" = REPARACIONES."IDR")AS SUMA_TEXT,
+     ( SELECT COALESCE ( SUM(MANOOBRA."TOTAL"),0)FROM MANOOBRA  WHERE MANOOBRA."IDR" = REPARACIONES."IDR")AS SUMA_MO,
+     PERSONALIZACION."LOGO" AS PERSONALIZACION_LOGO,
+     PERSONALIZACION."IVA" AS PERSONALIZACION_IVA,
+     REPARACIONES."IDR" AS REPARACIONES_IDR,
+     REPARACIONES."CUENTACLIENTE" AS REPARACIONES_CUENTACLIENTE,
+     REPARACIONES."KM" AS REPARACIONES_KM,
+     REPARACIONES."FECHASALIDA" AS REPARACIONES_FECHASALIDA,
+     convert(REPARACIONES."NFACTURA",int) AS REPARACIONES_NFACTURA,
+     CLIENTES."IDC" AS CLIENTES_IDC,
+     CLIENTES."NOMBRE" AS CLIENTES_NOMBRE,
+     CLIENTES."NIF" AS CLIENTES_NIF
+FROM
+     "PUBLIC"."REPARACIONES" REPARACIONES INNER JOIN "PUBLIC"."CLIENTES" CLIENTES ON REPARACIONES."CUENTACLIENTE2" = CLIENTES."IDC",
+     "PUBLIC"."PERSONALIZACION" PERSONALIZACION
+WHERE
+     FECHASALIDA BETWEEN $P{fechaInicio}AND$P{fechaFinal}
+ORDER BY 
+     REPARACIONES_NFACTURA]]>
+	</queryString>
+	<field name="SUMA_MAT" class="java.lang.Double"/>
+	<field name="SUMA_TEXT" class="java.lang.Double"/>
+	<field name="SUMA_MO" class="java.lang.Double"/>
+	<field name="PERSONALIZACION_LOGO" class="java.lang.String"/>
+	<field name="PERSONALIZACION_IVA" class="java.lang.Integer"/>
+	<field name="REPARACIONES_IDR" class="java.lang.Integer"/>
+	<field name="REPARACIONES_CUENTACLIENTE" class="java.lang.Integer"/>
+	<field name="REPARACIONES_KM" class="java.lang.Integer"/>
+	<field name="REPARACIONES_FECHASALIDA" class="java.sql.Date"/>
+	<field name="REPARACIONES_NFACTURA" class="java.lang.Integer"/>
+	<field name="CLIENTES_IDC" class="java.lang.Integer"/>
+	<field name="CLIENTES_NOMBRE" class="java.lang.String"/>
+	<field name="CLIENTES_NIF" class="java.lang.String"/>
+	<variable name="TOTAL" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[($F{SUMA_MAT}+$F{SUMA_TEXT}+$F{SUMA_MO})+(($F{SUMA_MAT}+$F{SUMA_TEXT}+$F{SUMA_MO})*0.21)]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_BASE" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{SUMA_MAT}+$F{SUMA_TEXT}+$F{SUMA_MO}]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_IVA" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[($F{SUMA_MAT}+$F{SUMA_TEXT}+$F{SUMA_MO})*0.21]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="78" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="116" height="50" uuid="7db1b35c-b185-4687-af40-97334eb081cd"/>
+				<imageExpression><![CDATA[$F{PERSONALIZACION_LOGO}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="184" y="1" width="241" height="38" uuid="dc453efc-bf79-4802-a5ca-a04b8cb5ad1e"/>
+				<textElement>
+					<font size="30"/>
+				</textElement>
+				<text><![CDATA[Listado Facturas]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yy">
+				<reportElement x="219" y="50" width="79" height="26" uuid="e04fb637-3795-4a54-98ed-f1bb0aae2ada"/>
+				<textElement>
+					<font size="15"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fechaInicio}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yy">
+				<reportElement x="348" y="50" width="100" height="26" uuid="0c0efd4a-a458-40c7-b779-39fbecc7e35f"/>
+				<textElement>
+					<font size="15"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fechaFinal}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="188" y="50" width="31" height="26" uuid="38e2300d-e66b-44e5-99cc-7403f18bf362"/>
+				<textElement>
+					<font size="15"/>
+				</textElement>
+				<text><![CDATA[Del]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="298" y="50" width="50" height="26" uuid="58bb3593-6d3e-4e0e-b5fc-28d53be2caba"/>
+				<textElement>
+					<font size="15"/>
+				</textElement>
+				<text><![CDATA[Al]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="0" width="555" height="1" uuid="18e5cc6c-f5e7-41e5-8350-21efe0629a05"/>
+			</line>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="22" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="59" height="20" uuid="2f8647ce-4e28-4642-b8fe-21fcae85f17c"/>
+				<text><![CDATA[FECHA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="59" y="0" width="100" height="20" uuid="ae44e17d-3c1e-4feb-ba09-c4c80df006d0"/>
+				<text><![CDATA[Nº FACTURA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="137" y="0" width="33" height="20" uuid="c68df431-fd89-4d55-b794-47b5bb4e6e86"/>
+				<text><![CDATA[BASE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="195" y="2" width="24" height="20" uuid="d78d3ba9-f956-41c2-a93d-a763aef7d709"/>
+				<text><![CDATA[IVA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="248" y="0" width="100" height="20" uuid="c0de066b-cd61-4a6b-a395-8d545bc4b078"/>
+				<text><![CDATA[TOTAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="369" y="0" width="100" height="20" uuid="78455e0c-74e7-40db-8340-a11e273f1ff7"/>
+				<text><![CDATA[NOMBRE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="565" y="0" width="100" height="20" uuid="e24d7697-4a94-48e7-a375-4ed4abae7e2c"/>
+				<text><![CDATA[CIF]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="26" splitType="Stretch">
+			<textField>
+				<reportElement x="59" y="0" width="32" height="26" uuid="3541000f-5061-449b-a5ab-dd597a316c8f"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{REPARACIONES_NFACTURA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="59" height="26" uuid="f8f930fc-57da-4cc7-a762-8a80cc80aadc"/>
+				<textFieldExpression><![CDATA[$F{REPARACIONES_FECHASALIDA}.toString()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="325" y="0" width="240" height="26" uuid="5f71408d-87c3-472a-b576-33820564d967"/>
+				<textFieldExpression><![CDATA[$F{CLIENTES_NOMBRE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="565" y="0" width="100" height="26" uuid="7c0b99be-2d27-41ee-bf61-40db51ed03a8"/>
+				<textFieldExpression><![CDATA[$F{CLIENTES_NIF}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="160" y="0" width="59" height="24" uuid="f5122abb-1cfd-4cd3-b627-c33f48034640"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[NumberFormat.getCurrencyInstance().format(($F{SUMA_MAT}+$F{SUMA_TEXT}+$F{SUMA_MO})*0.21 )]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="127" y="2" width="43" height="24" uuid="833a8831-0deb-4493-be21-81ef2a800c86"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[NumberFormat.getCurrencyInstance().format($F{SUMA_MAT}+$F{SUMA_TEXT}+$F{SUMA_MO})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="259" y="0" width="66" height="26" uuid="7ded193d-235b-4c6a-a13c-dfda11ed7f4f"/>
+				<textFieldExpression><![CDATA[NumberFormat.getCurrencyInstance().format(($F{SUMA_MAT}+$F{SUMA_TEXT}+$F{SUMA_MO})+(($F{SUMA_MAT}+$F{SUMA_TEXT}+$F{SUMA_MO})*0.21))]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="18" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="23" splitType="Stretch">
+			<textField>
+				<reportElement x="507" y="0" width="80" height="20" uuid="6718f9f3-7711-488d-ad16-a2ac63ab7c4e"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="611" y="0" width="40" height="20" uuid="40df82b8-78b7-46b2-84a0-27f948a251c9"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="65" splitType="Stretch">
+			<elementGroup>
+				<textField>
+					<reportElement x="359" y="23" width="110" height="42" uuid="c30a4ad9-0e08-4034-bddf-6f8db09fd2a1"/>
+					<textFieldExpression><![CDATA["TOTAL FACTURACION\n "+NumberFormat.getCurrencyInstance().format($V{TOTAL})]]></textFieldExpression>
+				</textField>
+			</elementGroup>
+			<line>
+				<reportElement x="12" y="10" width="790" height="1" uuid="8acb32a3-f524-4266-a459-378010191a96"/>
+			</line>
+			<textField>
+				<reportElement x="146" y="27" width="100" height="38" uuid="f590ef83-4c3d-41f0-ae8c-724ccca63e1d"/>
+				<textFieldExpression><![CDATA["TOTAL BASE\n "+NumberFormat.getCurrencyInstance().format($V{TOTAL_BASE})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="259" y="27" width="89" height="38" uuid="755a57a1-c957-4643-964c-f331a93ffd73"/>
+				<textFieldExpression><![CDATA["TOTAL IVA\n "+NumberFormat.getCurrencyInstance().format($V{TOTAL_IVA})]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

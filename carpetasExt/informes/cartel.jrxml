@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="cartel" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="eece4993-711a-4f82-9f66-1ae9e2296508">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="144"/>
+	<subDataset name="dataset1" uuid="4b23f633-9c50-4ec2-a87c-2b279b6d06a8"/>
+	<parameter name="IDR" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="PRECIO" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     MATRICULAS."MATRICULA" AS MATRICULAS_MATRICULA,
+     MATRICULAS."IDCLIENTE" AS MATRICULAS_IDCLIENTE,
+     MATRICULAS."MARCA" AS MATRICULAS_MARCA,
+     MATRICULAS."MODELO" AS MATRICULAS_MODELO,
+     MATRICULAS."BASTIDOR" AS MATRICULAS_BASTIDOR,
+     MATRICULAS."CODIGO" AS MATRICULAS_CODIGO,
+     MATRICULAS."OBSERVACIONESMATRICULA" AS MATRICULAS_OBSERVACIONESMATRICULA,
+     REPARACIONES."IDR" AS REPARACIONES_IDR,
+     REPARACIONES."CUENTACLIENTE" AS REPARACIONES_CUENTACLIENTE,
+     REPARACIONES."MATRICULA" AS REPARACIONES_MATRICULA,
+     REPARACIONES."KM" AS REPARACIONES_KM,
+     REPARACIONES."FECHAENTRADA" AS REPARACIONES_FECHAENTRADA,
+     REPARACIONES."FECHASALIDA" AS REPARACIONES_FECHASALIDA,
+     REPARACIONES."NFACTURA" AS REPARACIONES_NFACTURA,
+     REPARACIONES."RECEPTOR" AS REPARACIONES_RECEPTOR,
+     REPARACIONES."TRABAJOSREALIZAR" AS REPARACIONES_TRABAJOSREALIZAR,
+     REPARACIONES."CUENTACLIENTE2" AS REPARACIONES_CUENTACLIENTE2,
+     REPARACIONES."NSINIESTRO" AS REPARACIONES_NSINIESTRO
+FROM
+     "PUBLIC"."MATRICULAS" MATRICULAS,
+     "PUBLIC"."REPARACIONES" REPARACIONES
+WHERE
+     REPARACIONES.IDR  = $P{IDR}
+AND MATRICULAS.MATRICULA=REPARACIONES.MATRICULA]]>
+	</queryString>
+	<field name="MATRICULAS_MATRICULA" class="java.lang.String"/>
+	<field name="MATRICULAS_IDCLIENTE" class="java.lang.Integer"/>
+	<field name="MATRICULAS_MARCA" class="java.lang.String"/>
+	<field name="MATRICULAS_MODELO" class="java.lang.String"/>
+	<field name="MATRICULAS_BASTIDOR" class="java.lang.String"/>
+	<field name="MATRICULAS_CODIGO" class="java.lang.String"/>
+	<field name="MATRICULAS_OBSERVACIONESMATRICULA" class="java.lang.String"/>
+	<field name="REPARACIONES_IDR" class="java.lang.Integer"/>
+	<field name="REPARACIONES_CUENTACLIENTE" class="java.lang.Integer"/>
+	<field name="REPARACIONES_MATRICULA" class="java.lang.String"/>
+	<field name="REPARACIONES_KM" class="java.lang.Integer"/>
+	<field name="REPARACIONES_FECHAENTRADA" class="java.sql.Date"/>
+	<field name="REPARACIONES_FECHASALIDA" class="java.sql.Date"/>
+	<field name="REPARACIONES_NFACTURA" class="java.lang.String"/>
+	<field name="REPARACIONES_RECEPTOR" class="java.lang.Integer"/>
+	<field name="REPARACIONES_TRABAJOSREALIZAR" class="java.lang.String"/>
+	<field name="REPARACIONES_CUENTACLIENTE2" class="java.lang.Integer"/>
+	<field name="REPARACIONES_NSINIESTRO" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="165" splitType="Stretch">
+			<image>
+				<reportElement uuid="b240a3a4-fbbd-48dc-a895-d26bb4305091" x="43" y="0" width="275" height="159"/>
+				<imageExpression><![CDATA["C:\\Users\\Manu\\OneDrive\\tallerJava\\carpetasExt\\imagenes\\logos\\logo.gif"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="463" splitType="Stretch">
+			<textField>
+				<reportElement uuid="20595036-988d-4713-85c0-490dbab7397a" x="212" y="98" width="265" height="20"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA[$F{MATRICULAS_MATRICULA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="67e1af5b-8917-4016-9355-253f7c893655" x="212" y="15" width="265" height="20"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA[$F{MATRICULAS_MARCA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b4bbfc12-f0ba-44a5-9f66-2993c9b7e1a3" x="212" y="57" width="265" height="20"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA[$F{MATRICULAS_MODELO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="7a5790bb-523e-4e75-93b0-256ac004c7c3" x="212" y="139" width="265" height="20"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA[$F{MATRICULAS_BASTIDOR}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="dd1cc366-cddf-4547-8d80-fe4b6cd91ed1" x="212" y="181" width="265" height="20"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA[$F{REPARACIONES_KM}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="f1628dcd-6f05-42d9-9583-d44e6ef7f452" x="10" y="227" width="532" height="58"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="40" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{PRECIO}+" Euros"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="07883fd1-5531-4e20-8833-64eabe3fcebb" x="43" y="15" width="131" height="20"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MARCA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6ac3bf36-250c-4557-b093-91f61de19d8a" x="43" y="57" width="131" height="20"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MODELO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="39f82cdb-5a75-4598-ab58-108116ced229" x="43" y="98" width="131" height="20"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MATRICULA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d55d8915-ee84-4da9-bd8e-deda2baf23b8" x="43" y="139" width="131" height="20"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nº CHASIS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="79875f4d-17fb-4f8f-80fb-f32224f735c2" x="43" y="181" width="131" height="20"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[KM]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="27cfbfb7-b8a1-4c9a-bee9-74c3a9ae61d2" x="10" y="297" width="532" height="1"/>
+			</line>
+			<textField>
+				<reportElement uuid="63a50efe-3597-4adb-8565-0494796854d2" x="0" y="339" width="542" height="124"/>
+				<textElement>
+					<font size="22" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{MATRICULAS_OBSERVACIONESMATRICULA}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+</jasperReport>

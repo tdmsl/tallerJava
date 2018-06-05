@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="PresupuestoTrabajosExt" columnDirection="RTL" pageWidth="555" pageHeight="802" whenNoDataType="NoDataSection" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" whenResourceMissingType="Empty" uuid="8ee06770-d5d3-442a-b4b4-b2971ddd8fb9">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="IDR" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[SELECT
+     TrabajosExt.`IDR` AS TrabajosExt_IDR,
+     TrabajosExt.`Descripcion` AS TrabajosExt_Descripcion,
+     TrabajosExt.`PVP` AS TrabajosExt_PVP,
+     TrabajosExt.`Operario` AS TrabajosExt_Operario,
+     TrabajosExt.`id` AS TrabajosExt_id
+FROM
+     `TrabajosExt` TrabajosExt
+WHERE
+     IDR = $P{IDR}]]>
+	</queryString>
+	<field name="TrabajosExt_Descripcion" class="java.lang.String"/>
+	<field name="TrabajosExt_PVP" class="java.lang.Integer"/>
+	<field name="TrabajosExt_Operario" class="java.lang.Short"/>
+	<variable name="sumaText" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{TrabajosExt_PVP}]]></variableExpression>
+		<initialValueExpression><![CDATA[0.00]]></initialValueExpression>
+	</variable>
+	<columnHeader>
+		<band height="24">
+			<staticText>
+				<reportElement uuid="929a3574-79eb-432e-b241-e7f5b8be47c5" x="0" y="2" width="363" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TRABAJOS EXTERIORES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f416c7bf-0d4d-4198-9060-aec1007bca1b" x="540" y="0" width="15" height="20"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[OP]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<textField>
+				<reportElement uuid="57559650-a664-4c16-a2d2-abb44ab0c161" x="0" y="1" width="363" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{TrabajosExt_Descripcion}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00" isBlankWhenNull="false">
+				<reportElement uuid="71f8a7fd-f0c6-49dc-bb95-8b277ded2317" x="455" y="0" width="71" height="15"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{TrabajosExt_PVP}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="47bd813c-f1c8-4ad8-8bcd-eb1624bb9a6a" x="540" y="1" width="15" height="15"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{TrabajosExt_Operario}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+</jasperReport>
