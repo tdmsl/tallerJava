@@ -1,0 +1,131 @@
+JFDML JFormDesigner: "6.0.0.0.84" Java: "1.8.0_112-release" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class javax.swing.BoxLayout ) {
+			"axis": 1
+		} ) {
+			name: "this"
+			"title": "Control de acceso y salida"
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) ) {
+				name: "jPanel1"
+				"border": new javax.swing.border.LineBorder( sfield java.awt.Color black, 1, false )
+				"preferredSize": new java.awt.Dimension( 440, 75 )
+				add( new FormComponent( "javax.swing.JComboBox" ) {
+					name: "jComboBoxUser"
+					"border": new javax.swing.border.TitledBorder( new javax.swing.border.LineBorder( sfield java.awt.Color black, 1, true ), "Usuario" )
+					"minimumSize": new java.awt.Dimension( 56, 45 )
+					"preferredSize": new java.awt.Dimension( 300, 45 )
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jComboBoxUserActionPerformed", true ) )
+				} )
+				add( new FormComponent( "javax.swing.JSeparator" ) {
+					name: "jSeparator1"
+					"preferredSize": new java.awt.Dimension( 10, 2 )
+					"requestFocusEnabled": false
+				} )
+				add( new FormComponent( "com.toedter.calendar.JDateChooser" ) {
+					name: "jDateChooserFecha"
+					"border": new javax.swing.border.TitledBorder( new javax.swing.border.LineBorder( sfield java.awt.Color black, 1, true ), "Fecha" )
+					"preferredSize": new java.awt.Dimension( 150, 45 )
+					addEvent( new FormEvent( "java.beans.PropertyChangeListener", "propertyChange", "jDateChooserFechaPropertyChange", true ) )
+				} )
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class javax.swing.BoxLayout ) ) {
+				name: "jPanel2"
+				"border": new javax.swing.border.LineBorder( sfield java.awt.Color black, 1, false )
+				"preferredSize": new java.awt.Dimension( 497, 75 )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
+					"alignment": 0
+				} ) {
+					name: "jPanel5"
+					"preferredSize": new java.awt.Dimension( 150, 133 )
+					"verifyInputWhenFocusTarget": false
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "jLabel2"
+						"text": "Total Dia"
+						"preferredSize": new java.awt.Dimension( 125, 14 )
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "totalDia"
+						"preferredSize": new java.awt.Dimension( 70, 25 )
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "jLabel1"
+						"text": "Acumulado mensual"
+						"preferredSize": new java.awt.Dimension( 125, 14 )
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "totalMes"
+						"preferredSize": new java.awt.Dimension( 70, 25 )
+					} )
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+					"$horizontalGroup": "par l {seq l {space :p:22:p, comp jLabelHora:::p:228:p, space ::21:x}}"
+					"$verticalGroup": "par l {seq t {space :::p, comp jLabelHora:::::x, space :::p}}"
+				} ) {
+					name: "jPanel6"
+					"preferredSize": new java.awt.Dimension( 200, 72 )
+					"requestFocusEnabled": false
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "jLabelHora"
+						"font": new java.awt.Font( "Tahoma", 0, 24 )
+						"horizontalAlignment": 0
+						"text": "Hora actual"
+						"border": new javax.swing.border.TitledBorder( new javax.swing.border.LineBorder( sfield java.awt.Color black, 1, true ), "Hora" )
+					} )
+				} )
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) ) {
+				name: "jPanel3"
+				"border": new javax.swing.border.LineBorder( sfield java.awt.Color black, 1, false )
+				"preferredSize": new java.awt.Dimension( 438, 250 )
+				add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+					name: "jScrollPaneMov"
+					"border": new javax.swing.border.TitledBorder( new javax.swing.border.LineBorder( sfield java.awt.Color black, 1, false ), "Detalle Movimientos" )
+					"preferredSize": new java.awt.Dimension( 300, 200 )
+					add( new FormComponent( "javax.swing.JTable" ) {
+						name: "jTableMov"
+						"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector {
+							add( new java.util.Vector {
+								add( null )
+							} )
+						}, new java.util.Vector {
+							add( "Cargando Datos" )
+						}, new java.util.Vector {
+							add( class java.lang.Object )
+						}, new java.util.Vector {
+							add( true )
+						}, new java.util.Vector {
+							add( null )
+						} )
+						"preferredSize": new java.awt.Dimension( 300, 220 )
+					} )
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+					"$horizontalGroup": "par l {seq t {space :p:34:p, comp jButtonImprimir:::p:51:p, space ::19:x, comp jButtonGrabar:::p:45:p, space :p:21:p}}"
+					"$verticalGroup": "par l {seq t {space ::124:x, par t {comp jButtonImprimir:::p::p, comp jButtonGrabar:::p::p}, space :p:25:p}}"
+				} ) {
+					name: "jPanel4"
+					"preferredSize": new java.awt.Dimension( 170, 200 )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "jButtonGrabar"
+						"icon": new com.jformdesigner.model.SwingIcon( 0, "/es/tdmsl/app/images/save.png" )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jButtonGrabarActionPerformed", true ) )
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "jButtonImprimir"
+						"icon": new com.jformdesigner.model.SwingIcon( 0, "/es/tdmsl/app/images/print-icon.png" )
+						"maximumSize": new java.awt.Dimension( 67, 43 )
+						"minimumSize": new java.awt.Dimension( 67, 43 )
+						"preferredSize": new java.awt.Dimension( 67, 43 )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jButtonImprimirActionPerformed", true ) )
+					} )
+				} )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"size": new java.awt.Dimension( 497, 485 )
+			"location": new java.awt.Point( 0, 0 )
+		} )
+	}
+}

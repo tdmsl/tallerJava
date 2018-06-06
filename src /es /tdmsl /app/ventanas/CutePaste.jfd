@@ -1,0 +1,41 @@
+JFDML JFormDesigner: "5.2.2.2.228" Java: "1.8.0_51" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JDialog", new FormLayoutManager( class java.awt.FlowLayout ) ) {
+			name: "this"
+			"defaultCloseOperation": 2
+			"minimumSize": new java.awt.Dimension( 200, 75 )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "BotonCortar"
+				"icon": new com.jformdesigner.model.SwingIcon( 0, "/es/tdmsl/app/images/cortar.gif" )
+				"toolTipText": "Cortar"
+				auxiliary() {
+					"JavaCodeGenerator.customCreateCode": "new javax.swing.JButton(new DefaultEditorKit.CutAction());"
+				}
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "BotonCortarActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "BotonCopiar"
+				"icon": new com.jformdesigner.model.SwingIcon( 0, "/es/tdmsl/app/images/copiar.gif" )
+				"toolTipText": "Copiar"
+				auxiliary() {
+					"JavaCodeGenerator.customCreateCode": "new javax.swing.JButton(new DefaultEditorKit.CopyAction());"
+				}
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "BotonCopiarActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "BotonPegar"
+				"icon": new com.jformdesigner.model.SwingIcon( 0, "/es/tdmsl/app/images/pegar.gif" )
+				"toolTipText": "Pegar"
+				auxiliary() {
+					"JavaCodeGenerator.customCreateCode": "new javax.swing.JButton(new DefaultEditorKit.PasteAction());"
+				}
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "BotonPegarActionPerformed", true ) )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"size": new java.awt.Dimension( 485, 36 )
+		} )
+	}
+}

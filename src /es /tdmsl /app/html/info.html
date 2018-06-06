@@ -1,0 +1,214 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta content="es" http-equiv="Content-Language" />
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<title>Pendiente de hacer</title>
+<style type="text/css">
+.auto-style1 {
+	text-align: center;
+	font-size: xx-large;
+	background-color: #FF8D00;
+}
+.auto-style2 {
+	text-align: left;
+}
+.auto-style4 {
+	text-align: left;
+	text-decoration: underline;
+}
+.auto-style5 {
+	color: #0000FF;
+}
+.auto-style7 {
+	font-size: xx-large;
+}
+.auto-style8 {
+	text-align: left;
+	text-decoration: underline;
+	font-size: large;
+	color: #0000FF;
+}
+.auto-style9 {
+	text-decoration: underline;
+	font-size: large;
+	color: #0000FF;
+}
+.auto-style11 {
+	color: #000000;
+}
+</style>
+</head>
+
+<body>
+
+<p class="auto-style1" style="height: 45px">Descripción e Inicio</p>
+<p class="auto-style2">&nbsp;</p>
+<p class="auto-style2">TallerJava es un aplicación para la gestión de un pequeño 
+taller de reparación genérico, autoinstalable y configurable por el usuario.<br> 
+El ejecutable tallerJava testea la existencia de la carpeta "trabajosExt", y si 
+no existe, bien por ser la primera instalacción, o porque el usuario desea rehacerla y la 
+ha borrado previamente, la crea junto con su 
+estructura de archivos, con valores predeterminados.</p>
+<p class="auto-style2">&nbsp;</p>
+<p class="auto-style1" style="height: 38px">
+<span class="auto-style7">Breve descripción de las pestañas existentes</span><strong>:</strong></p>
+<p class="auto-style4">&nbsp;</p>
+<p class="auto-style8"><strong>Cinco pestañas básicas y de lógica idéntica</strong></p>
+<ul>
+	<li class="auto-style5">Clientes</li>
+	<li class="auto-style5">Matrículas</li>
+	<li class="auto-style5">Almacén</li>
+	<li class="auto-style5">Teléfonos</li>
+	<li class="auto-style5">Operarios</li>
+</ul>
+<p>Muestran un listado de su tabla respectiva, con opciones de búsqueda por 
+campo o bien por inicio de cadena al ir tecleando caracteres o subcadena al 
+pulsar "Enter" en el cuadro de búsqueda.<br />
+Pulsando sobre una línea se edita el registro.</p>
+<p>&nbsp;</p>
+<ul>
+	<li class="auto-style5">Reparaciones</li>
+</ul>
+<p>Igual en la operativa básica (pestañas arriba mencionadas) pero con un formulario de 
+edición más complejo,&nbsp; con algunas pestañas internas de funcionamiento intuitivo. </p>
+<p class="auto-style9"><strong>Cinco pestañas más:</strong></p>
+<ul>
+	<li class="auto-style5">Personalización</li>
+</ul>
+<p>Importante para el funcionamiendo del programa, intuitiva y de un uso 
+practicamente limitado al primer arranque del programa.<br />
+Se personaliza con los datos de la empresa, las rutas de los logos, informes 
+y aplicaciones externas a utilizar.<br />
+Unos botones para importar algunos datos y uno para inicializar el programa.</p>
+<ul>
+	<li class="auto-style5">Estadísticas</li>
+</ul>
+<p>Muestra datos estadísticos, de totales facturación-meses-años y Mano de Obra 
+por Operario Fecha.<br />
+También desde esta pestaña se imprimen los listados Facturas , 
+Horas-Operarios y Reparaciones-Cliente filtrados por fechas.</p>
+<ul>
+	<li class="auto-style5">Contabilidad</li>
+</ul>
+<p class="auto-style5"><span class="auto-style11">Cuatro accesos:</span><br class="auto-style11">
+<ul>
+<span class="auto-style11">
+
+<li>A google excel para llevar el control de cobros y pagos.</li>
+<li>A la URL de tu banca on-line.</li>
+<li>A un formulario que nos permite controlar los ingresos y salidas de una cuenta</li>
+útil para llevar el control de ingresos de algunos usuarios.</li>
+<li>A tu GoogleDrive , que ya te habrás creado, o bien, al ya existente "DatosTaller" desde donde podrás bajarte alguna actualización y bases&nbsp;de&nbsp;datos para importar</span></p>
+</ul>
+
+<ul>
+	<li class="auto-style5">Caja</li>
+</ul>
+<p>Controla la caja, se enlaza directamente desde reparaciones al imprimir una 
+factura.</p>
+<ul>
+	<li class="auto-style5">Enlaces Externos</li>
+</ul>
+<p>Un acceso a un documento html externo configurable por el usuario con los link 
+más habituales.</p>
+<ul>
+	<li class="auto-style5">Extras</li>
+</ul>
+<p>Cuando el foco esta en en el panel de "Notas", pulsando F1 se muestra un formulario para el control
+de las horas de trabajo de los trabajadores dados de alta </p>        
+        
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p class="auto-style1">Estructura de archivos</p>
+<table style="width: 100%">
+	<tr>
+		<td><img alt="" height="110" src="Img/arbol1.gif" width="146"></td>
+		<td>
+		<ul>
+			<li>tallerJava, es el ejecutable; </li>
+			<li>carpetas ext, es donde se guardan todos los documentos que 
+			pueden ser editados por el usuario;</li>
+			<li>datos conterndrá la base de datos, sobre la que trabaja el 
+			software.</li>
+		</ul>
+		</td>
+	</tr>
+	<tr>
+		<td><img alt="" height="172" src="Img/arbol2.gif" width="146"></td>
+		<td>Al desplegar catpetasExt, obtenemos el árbol de la imagen, que se 
+		describe:<br>
+		<ul>
+		<li>datos: aquí se guardará una copia de la base de datos en uso cada 
+		vez que se arranque el programa y cada 1º dia del mes se genererá un 
+		.zip del mismo que se enviará a la dirección de correo especificada en 
+		personalización.</li>
+			<li>El archivo de confuguración debe ser editado para correr el 
+			programa en un cliente.</li>
+		
+		</ul>
+		
+		<p>&nbsp;</p>
+		
+		</td>
+	</tr>
+	<tr>
+		<td><img alt="" height="92" src="Img/arbolDatosImp.gif" width="146"></td>
+		<td><br />
+		Al desplegar DatosImportación, obtenemos el árbol de la imagen, que se 
+		desctibe:<br />
+		<ul>
+			<li>DatosImportacion.mdb, es una mdb, de access con la estructura de 
+			los archivos susceptibles de ser importados para facilitar el trabajo 
+			de generación de los archivos.txt que se podrán importar desde 
+			personalización ,se guardan por defecto en la catpeta Almacén.</li>
+		
+		</ul>
+		
+		<p>&nbsp;</p>
+		<p>&nbsp;</p>
+		</td>
+	</tr>
+	<tr>
+		<td><img alt="" height="96" src="Img/arbolHTML.gif" width="146"></td>
+		<td>Al desplegar html, obtenemos el árbol de la imagen, que se 
+		describe:<br />
+		<br />
+		Un documento tipo sencillo para que el usuario lo modifique según sus 
+		preferencias con un editor de codigo HTML</td>
+	</tr>
+	<tr>
+		<td><img alt="" height="91" src="Img/arbolImagenes.gif" width="146"></td>
+		<td>Al desplegar Imágenes, obtenemos el árbol de la imagen, que se 
+		desctibe:<br />
+		<br />
+		<ul>
+		<li>
+		Simplemente dos carpetas para alojar las imagenes del logo y fondo de 
+		pantalla que queramos usar aunque el programa las puede coger de 
+		cualquier sitio del sistema de archivos, por organización se ponen aquí.</li>
+		</ul>
+		</td>
+	</tr>
+	<tr>
+		<td><img alt="" height="261" src="Img/arbilInformes.gif" width="257"></td>
+		<td>Al desplegar informes, obtenemos el árbol de la imagen, que se 
+		describe:<br />
+		<br />
+		<ul>
+		<li>
+		Los informes de impresión , se guardan en esta carpeta para que resulten 
+		accesibles al usuario y poder personalizarlos a su gusto con la 
+		herramienta<a href="https://community.jaspersoft.com/project/ireport-designer" target="_blank"> 
+		iReport</a>.</li>
+		
+		</ul>
+		</td>
+	</tr>
+</table>
+
+
+</body>
+
+</html>
