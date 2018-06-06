@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+
+
+    <meta charset="UTF-8"><title>Title</title></head><body>Descripcion del conexionado<br>
+<br>
+<img style="width: 450px; height: 398px;" alt="Terminales del Conector OBD||" src="../images/terminales-conector-obdii.jpg"><br>
+<big>Según el protocolo de comunicación que utilice el vehículo los pines habilitados
+en el conector serán diferentes.<br>
+&nbsp;El protocolo ISO 9141/14230 utiliza los pines 6 y 15,<br>
+&nbsp;el protocolo J1850 PWM
+utiliza el 2 y el 10, <br>
+el protocolo J1850 VPW utiliza solo el pin 2, y<br>
+&nbsp;el protocolo ISO
+15765 (CAN), el pin 6 y 14. <br>
+Todos los protocolos utilizan como fuente de
+alimentación los pines 4 y 5 (masa chasis y masa señal respectivamente), y el pin
+16 (+12V). </big><br>
+<br>
+Analizando la respuesta<br>
+<br>
+ La ECU contesta con la siguiente trama y la interface la recoge para
+enviarla al puerto serie:<br>
+&nbsp;6A F1 61 41 0C 0B 88 0A -&gt;<br>
+&nbsp;Respuesta ECU
+ 01 0C -&gt; <br>
+Respuesta
+ 6A F1 61 41 0C 0B 88 0A Interface <br>
+Se puede observar que la interface le añade a la trama el comando
+solicitado<br>
+<br>
+<big>Por tanto en la respuesta obtenida podemos diferenciar que:<br>
+&nbsp;01 0C: Comando requerido<br>
+&nbsp;6A F1 61: Cabecera de la trama(Especifica direcciones de memoria,
+prioridades, tipo de conexión, etc..)<br>
+&nbsp;41 0C: Confirmación de que se ha contestado al comando requerido
+sumando 40 a 01, quedando 41 0C.<br>
+&nbsp;0B 88: El dato que interesa para calcular las rpm. Según el documento
+OBD Pid’s anteriormente mencionado, si pasamos a decimal estos
+valores quedando en 11 y 136, y aplicamos esta fórmula
+(( ) ) ( )
+738
+4
+11 256 136
+4
+256
+=
+⋅ +
+=
+A⋅ + B
+, obtenemos las revoluciones por
+minuto del motor a tiempo real.
+0A: <br>
+Chequeo de redundancia cíclica de la trama (CRC). 
+</big><br>
+<br>
+<big>Vemos que podemos seleccionar el protocolo de comunicación o dejar
+seleccionada la opción “Automatic detection of communication protocol”, para
+que sea autodetectado. Esta sección también nos proporciona la posibilidad de
+modificar las cabeceras de las tramas que se van a enviar. Cada opción (Priority,
+ECU Addres, Tool address) se corresponde con un byte dentro de la trama, esto
+aumenta las posibilidades de éxito en el momento de conectarse con la ECU, ya
+que aunque muchos modelos de centralitas se comunican de la misma forma,
+necesitan que se les especifique este parámetro y por tanto modificar el que se
+envía por defecto.</big> <br>
+
+
+</body></html>
